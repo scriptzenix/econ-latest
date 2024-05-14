@@ -1,35 +1,41 @@
-# Resolve react_native_pods.rb with node to allow for hoisting
-require Pod::Executable.execute_command('node', ['-p',
-  'require.resolve(
-    "react-native/scripts/react_native_pods.rb",
-    {paths: [process.argv[1]]},
-  )', __dir__]).strip
+# React Native pods ko hoisting ke liye node ke saath resolve karein
+react_native_pods_path = Pod::Executable.execute_command('node', ['-p', 'require.resolve("react-native/scripts/react_native_pods.rb", { paths: [process.argv[1]] })', __dir__]).strip
+require react_native_pods_path
 
-platform :ios, min_ios_version_supported
+# iOS platform version specify karein
+platform :ios, '10.0'
+
+# React Native project ko prepare karein
 prepare_react_native_project!
 
+# Use frameworks ya libraries link karne ka configuration
 linkage = ENV['USE_FRAMEWORKS']
 if linkage != nil
   Pod::UI.puts "Configuring Pod with #{linkage}ally linked Frameworks".green
   use_frameworks! :linkage => linkage.to_sym
 end
 
+# E_Commerce_project target create karein
 target 'E_Commerce_project' do
+  # Native modules ka use karein
   config = use_native_modules!
 
+  # React Native ko use karein
   use_react_native!(
     :path => config[:reactNativePath],
-    # An absolute path to your application root.
+    # Application root ka absolute path specify karein
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
+  # E_Commerce_projectTests target create karein
   target 'E_Commerce_projectTests' do
     inherit! :complete
-    # Pods for testing
+    # Testing ke liye Pods ko include karein
   end
 
+  # Post-installation script
   post_install do |installer|
-    # https://github.com/facebook/react-native/blob/main/packages/react-native/scripts/react_native_pods.rb#L197-L202
+    # React Native ke post-installation steps ko run karein
     react_native_post_install(
       installer,
       config[:reactNativePath],
