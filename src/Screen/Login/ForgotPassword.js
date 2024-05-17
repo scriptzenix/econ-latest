@@ -1,4 +1,4 @@
-import { Text, View,StyleSheet, TouchableOpacity, Image, TextInput } from 'react-native'
+import { Text, View, StyleSheet, TouchableOpacity, Image, TextInput } from 'react-native'
 import React, { useState } from 'react'
 import Scale from '../../Scale'
 import { backIcon, rightIcon, closeIcon } from '../../assets'
@@ -31,7 +31,8 @@ export default function ForgotPassword() {
   const navigation = useNavigation();
   return (
     <View style={styles.mainContainer}>
-      <TouchableOpacity onPress={() => {
+      <TouchableOpacity 
+      onPress={() => {
         navigation.goBack();
       }}>
         <Image source={backIcon} style={styles.Icon} />
@@ -46,8 +47,8 @@ export default function ForgotPassword() {
           <TextInput autoCapitalize='none' keyboardType="email-address" style={styles.textInput}
             value={email}
             onChangeText={text => setEmail(text)} />
-           {emailError ? (
-            <Image source={closeIcon} style={styles.rightIcon} /> 
+          {emailError ? (
+            <Image source={closeIcon} style={styles.rightIcon} />
           ) : (
             email !== '' && <Image source={rightIcon} style={styles.rightIcon} />
           )}
@@ -66,7 +67,6 @@ export default function ForgotPassword() {
 const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
-    // backgroundColor: "#f9f9f9",
     marginHorizontal: Scale(15)
   },
   Icon: {
@@ -77,7 +77,9 @@ const styles = StyleSheet.create({
     fontSize: Scale(34),
     fontWeight: "700",
     color: "#000",
-    marginTop: Scale(20)
+    marginTop: Scale(20),
+    fontFamily:"Metropolis",
+
   },
   textInputView: {
     flexDirection: "row",
@@ -108,6 +110,8 @@ const styles = StyleSheet.create({
   acTxt: {
     fontSize: Scale(18),
     color: "#222222",
+    fontFamily:"Metropolis",
+
   },
   forwardIcon: {
     height: Scale(7),
@@ -121,21 +125,23 @@ const styles = StyleSheet.create({
     color: "#FFFFFF",
     textAlign: "center",
     justifyContent: "center",
-    fontSize: Scale(15)
+    fontSize: Scale(15),
+    fontFamily:"Metropolis",
   },
   btnView: {
     backgroundColor: "#DB3022",
     borderRadius: Scale(25),
-    width: Scale(370),
+    width: Scale(400),
     height: Scale(48),
     alignItems: "center",
     justifyContent: "center",
-    marginHorizontal: Scale(20),
     marginTop: Scale(30)
   },
   socialacTxt: {
-    fontSize: Scale(20),
     color: "#222222",
+    fontFamily: "Metropolis",
+fontSize: 20,
+lineHeight: 20,
   },
   socialacView: {
     alignItems: "center",
@@ -149,8 +155,8 @@ const styles = StyleSheet.create({
     justifyContent: "center"
   },
   Btn: {
-    width: Scale(92),
-    height: Scale(64)
+    width: 92,
+    height: 64
   },
   textInput: {
     height: Scale(50),
@@ -158,9 +164,10 @@ const styles = StyleSheet.create({
     marginHorizontal: Scale(8)
   },
   subHeadingTxt: {
-    fontSize: 18,
+    fontSize: 19,
     color: "#222222",
-    lineHeight: Scale(20),
+    lineHeight: 24,
+    fontFamily:"Metropolis",
   },
   placeholder: {
     position: 'absolute',
@@ -168,12 +175,14 @@ const styles = StyleSheet.create({
     left: Scale(12),
     zIndex: -1,
     fontSize: Scale(16),
+    fontFamily:"Metropolis",
   },
   placeholderShifted: {
     top: Scale(-1),
     fontSize: Scale(16),
-    justifyContent: "center"
-    // color: '#222222',
+    justifyContent: "center",
+    fontFamily:"Metropolis",
+
   },
   textInputError: {
     borderColor: 'red',

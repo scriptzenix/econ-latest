@@ -9,7 +9,9 @@ import React from 'react';
 import RootStackScreen from "./src/Routes/RootStackScreen"
 function App(){
   return (
+    // <View >
     <RootStackScreen/>
+    // </View>
   );
 }
 
