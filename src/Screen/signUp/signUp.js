@@ -3,13 +3,13 @@ import { Text, View, TouchableOpacity, Image, StyleSheet, TextInput } from 'reac
 import { backIcon, rightIcon, forwardIcon, facebook, google } from "../../assets"
 import Scale from '../../Scale';
 import { useNavigation } from '@react-navigation/native';
-export default function signUp() {
+export default function SignUp() {
   const navigation = useNavigation();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [nameError,setnameError] = useState('');
-  const [emailError,setemailError] =useState('');
+  const [nameError, setnameError] = useState('');
+  const [emailError, setemailError] = useState('');
   const [passwordError, setpasswordError] = useState('');
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -48,64 +48,64 @@ export default function signUp() {
   };
   const signUpHandler = () => {
     if (validateInputs()) {
-     navigation.navigate('login');
+      navigation.navigate('login');
     }
   };
   return (
     <View style={styles.mainContainer}>
       <TouchableOpacity onPress={() => {
-        navigation.goBack(); 
+        navigation.goBack();
       }}>
         <Image source={backIcon} style={styles.Icon} />
       </TouchableOpacity>
       <Text style={styles.headingTxt}>SignUp</Text>
       <View style={styles.container}>
-        <View 
-        style={[styles.textInputView, nameError && styles.textInputError]}
+        <View
+          style={[styles.textInputView, nameError && styles.textInputError]}
 
-        > 
-        <Text 
-        style={[styles.placeholder, name !== '' && styles.placeholderShifted]}
-        >Name</Text>
-          <TextInput 
-          autoCapitalize='none' keyboardType='default' 
-          style={styles.textInput}
+        >
+          <Text
+            style={[styles.placeholder, name !== '' && styles.placeholderShifted]}
+          >Name</Text>
+          <TextInput
+            autoCapitalize='none' keyboardType='default'
+            style={styles.textInput}
             value={name}
             onChangeText={text => setName(text)}
           />
           {name !== '' && <Image source={rightIcon} style={styles.rightIcon} />}
         </View>
         {nameError ? <Text style={styles.errorText}>{nameError}</Text> : null}
-        <View 
-        style={[styles.textInputView, emailError && styles.textInputError]}
-        
+        <View
+          style={[styles.textInputView, emailError && styles.textInputError]}
+
         >
-        <Text 
-        style={[styles.placeholder, email !== '' && styles.placeholderShifted]}
-        >Email</Text>
-          <TextInput  
-           autoCapitalize='none' 
-           keyboardType="email-address" 
-           style={styles.textInput} 
-          value={email}
-          onChangeText={text => setEmail(text)}
+          <Text
+            style={[styles.placeholder, email !== '' && styles.placeholderShifted]}
+          >Email</Text>
+          <TextInput
+            autoCapitalize='none'
+            keyboardType="email-address"
+            style={styles.textInput}
+            value={email}
+            onChangeText={text => setEmail(text)}
           />
-          {email !== '' &&  <Image source={rightIcon} style={styles.rightIcon} />}
+          {email !== '' && <Image source={rightIcon} style={styles.rightIcon} />}
         </View>
         {emailError ? <Text style={styles.errorText}>{emailError}</Text> : null}
 
-        <View 
-        style={[styles.textInputView, passwordError && styles.textInputError]}
+        <View
+          style={[styles.textInputView, passwordError && styles.textInputError]}
         >
-        <Text 
-        style={[styles.placeholder, password !== '' && styles.placeholderShifted]}
+          <Text
+            style={[styles.placeholder, password !== '' && styles.placeholderShifted]}
 
-        >Password</Text>
+          >Password</Text>
 
-          <TextInput 
-          autoCapitalize='none' keyboardType="visible-password" style={styles.textInput}
-          value={password}
-          onChangeText={text => setPassword(text)}
+          <TextInput
+            autoCapitalize='none' keyboardType="visible-password" style={styles.textInput}
+            value={password}
+            onChangeText={text => setPassword(text)}
           />
           {password !== '' && <Image source={rightIcon} style={styles.rightIcon} />}
         </View>
@@ -121,16 +121,18 @@ export default function signUp() {
       <TouchableOpacity style={styles.btnView} onPress={signUpHandler}>
         <Text style={styles.btnTxt}>SIGN UP</Text>
       </TouchableOpacity>
-      <View style={styles.socialacView}>
-        <Text style={styles.socialacTxt}>Or sign up with social account</Text>
-      </View>
-      <View style={styles.bottombtnView}>
-        <TouchableOpacity>
-          <Image source={google} style={styles.Btn}/>
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Image source={facebook} style={styles.Btn}/>
-        </TouchableOpacity>
+      <View style={styles.bottomTxt}>
+        <View style={styles.socialacView}>
+          <Text style={styles.socialacTxt}>Or login with social account</Text>
+        </View>
+        <View style={styles.bottombtnView}>
+          <TouchableOpacity>
+            <Image source={google} style={styles.Btn} />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Image source={facebook} style={styles.Btn} />
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   )
@@ -149,7 +151,9 @@ const styles = StyleSheet.create({
     fontSize: Scale(34),
     fontWeight: "700",
     color: "#000",
-    marginTop: Scale(20)
+    marginTop: Scale(20),
+    fontFamily: "Metropolis",
+
   },
   textInputView: {
     flexDirection: "row",
@@ -178,8 +182,10 @@ const styles = StyleSheet.create({
 
   },
   acTxt: {
-    fontSize: Scale(18),
     color: "#222222",
+    fontFamily: "Metropolis",
+    fontSize: 16,
+    lineHeight: 20,
   },
   forwardIcon: {
     height: Scale(7),
@@ -187,49 +193,51 @@ const styles = StyleSheet.create({
     marginLeft: Scale(5),
     alignItems: "center",
     justifyContent: "center",
-    marginTop: Scale(8)
+    marginTop: Scale(5)
   },
   btnTxt: {
     color: "#FFFFFF",
     textAlign: "center",
     justifyContent: "center",
-    fontSize: Scale(15)
+    fontSize: Scale(15),
+    fontFamily: "Metropolis",
+
   },
   btnView: {
     backgroundColor: "#DB3022",
     borderRadius: Scale(25),
-    width: Scale(370),
+    width: Scale(400),
     height: Scale(48),
     alignItems: "center",
     justifyContent: "center",
-    marginHorizontal: Scale(20),
     marginTop: Scale(30)
   },
   socialacTxt: {
-    fontSize: Scale(20),
     color: "#222222",
+    fontFamily: "Metropolis",
+    fontSize: 20,
+
   },
   socialacView: {
     alignItems: "center",
     justifyContent: "center",
-    flex: 0.5
+    flex: 0.2
   },
   bottombtnView: {
     flexDirection: "row",
-    marginTop: Scale(20),
-    alignItems: "center",
-    justifyContent: "center"
   },
   Btn: {
-    width: Scale(92),
-    height: Scale(64)
+    width: Scale(120),
+    height: Scale(70)
   },
   textInput: {
     height: Scale(50),
     width: Scale(300),
     marginHorizontal: Scale(8),
-    fontSize:Scale(16),
-    marginTop:Scale(2)
+    fontSize: Scale(16),
+    marginTop: Scale(2),
+    fontFamily: "Metropolis",
+
   },
   placeholder: {
     position: 'absolute',
@@ -237,18 +245,27 @@ const styles = StyleSheet.create({
     left: Scale(12),
     zIndex: -1,
     fontSize: Scale(16),
+    fontFamily: "Metropolis",
+
   },
   placeholderShifted: {
     top: Scale(-1),
     fontSize: Scale(16),
-    justifyContent:"center"
+    justifyContent: "center",
+    fontFamily: "Metropolis",
+
   },
   textInputError: {
     borderColor: 'red',
     borderWidth: 1,
   },
-  errorText:{
-    color:"red",
-    marginHorizontal:Scale(5)
+  errorText: {
+    color: "red",
+    marginHorizontal: Scale(5)
+  },
+  bottomTxt: {
+    flex: 0.9,
+    justifyContent: "flex-end",
+    alignItems: "center",
   }
 })

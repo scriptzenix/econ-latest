@@ -10,5 +10,18 @@ export const New = require("./Assets/New.png");
 export const product = require("./Assets/photo.png");
 export const Tshirt = require("./Assets/tshirt.png");
 export const product1 = require("./Assets/productt.png");
+export const Home = require("./Assets/home.png");
+export const shop = require("./Assets/shop.png");
+export const bag = require("./Assets/bag.png");
+export const profile = require("./Assets/profile.png");
+export const splashimg = require("./Assets/e_commerce.png");
+export const splashimg1 = require("./Assets/shop_e.png");
+export const splashimg2 = require("./Assets/globalshop.png");
+export const searchIcon = require("./Assets/search.png");
+export const Myprofile = require("./Assets/Myprofile.png");
+export const forwardImg = require("./Assets/forward.png");
+
+
+
 
 

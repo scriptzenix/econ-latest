@@ -3,8 +3,7 @@ import React from 'react'
 import { Fashionimg, image, product, Tshirt, product1 } from '../../assets';
 import Scale from '../../Scale';
 import { Rating } from 'react-native-ratings';
-import { scheduleFlushOperations } from 'react-native-gesture-handler/lib/typescript/handlers/gestureHandlerCommon';
-export default function landingPage() {
+export default function LandingPage() {
 
     return (
 
@@ -26,9 +25,7 @@ export default function landingPage() {
                 {flatist()}
             </View>
         </ScrollView>
-
     )
-
 }
 const renderItem = ({ item }) => (
     <TouchableOpacity style={styles.cardContainer}>
@@ -38,11 +35,13 @@ const renderItem = ({ item }) => (
             </View>
         </ImageBackground>
         <View>
-            <Rating 
+            <Rating
                 type='custom'
                 ratingCount={5}
                 imageSize={20}
                 onFinishRating={this.ratingCompleted}
+                defaultRating={0}
+                onStartRating={0}
                 style={styles.rating}
             />
         </View>
@@ -58,45 +57,43 @@ const renderItem = ({ item }) => (
 const flatist = () => {
     const data = [
         {
+            id: '1', // Unique identifier for each item
             image: product1,
             derssName: "Dorothy Perkins",
             derssSubName: "Evening Dress",
             price: "15$",
             DiscountPrice: "12$",
             new: "NEW"
-
         },
         {
+            id: '2', // Unique identifier for each item
             image: Tshirt,
             derssName: "Dorothy Perkins",
             derssSubName: "Evening Dress",
             price: "15$",
             DiscountPrice: "12$",
             new: "NEW"
-
-
         },
         {
-            image: product,
+            id: '3', // Unique identifier for each item
+            image: product1,
             derssName: "Dorothy Perkins",
             derssSubName: "Evening Dress",
             price: "15$",
             DiscountPrice: "12$",
             new: "NEW"
-
-
         },
         {
+            id: '4', // Unique identifier for each item
             image: Tshirt,
             derssName: "Dorothy Perkins",
             derssSubName: "Evening Dress",
             price: "15$",
             DiscountPrice: "12$",
             new: "NEW"
-
-
         },
-    ]
+        // Add id for other items
+    ];
     return (
         <FlatList showsHorizontalScrollIndicator={false}
             horizontal={true}
@@ -122,7 +119,8 @@ const styles = StyleSheet.create({
     },
     checkBtnTxt: {
         fontSize: Scale(14),
-        color: "#fff"
+        color: "#fff",
+        fontFamily: "Metropolis",
     },
     checkBtn: {
         backgroundColor: "red",
@@ -145,7 +143,8 @@ const styles = StyleSheet.create({
         color: "#222222",
         alignItems: "center",
         justifyContent: "center",
-        fontWeight: "700"
+        fontWeight: "700",
+        fontFamily: "Metropolis",
     },
     allTxtView: {
         justifyContent: "center",
@@ -153,18 +152,19 @@ const styles = StyleSheet.create({
     },
     allTxt: {
         fontSize: Scale(17),
-        color: "#222222"
+        color: "#222222",
+        fontFamily: "Metropolis",
     },
     subHeading: {
         color: "#9B9B9B",
         marginHorizontal: Scale(10),
-        fontSize: Scale(18)
+        fontSize: Scale(18),
+        fontFamily: "Metropolis",
     },
-
     cardContainer: {
         marginHorizontal: Scale(10),
         marginTop: Scale(20),
-        marginBottom:Scale(30),
+        marginBottom: Scale(30),
     },
     newTxtView: {
         backgroundColor: "#000",
@@ -175,7 +175,6 @@ const styles = StyleSheet.create({
         alignItems: "center",
         marginLeft: Scale(10),
         marginTop: Scale(10)
-
     },
     newTxt: {
         color: "#fff"
@@ -185,8 +184,7 @@ const styles = StyleSheet.create({
         width: Scale(190),
         resizeMode: "contain",
         marginTop: Scale(10),
-        flex:1,
-       
+        flex: 1,
     },
     rating: {
         alignSelf: "flex-start",
@@ -194,29 +192,32 @@ const styles = StyleSheet.create({
     },
     priceView: {
         flexDirection: "row",
-        gap: 10
+        gap: 10,
+        marginTop: Scale(5)
     },
     derssName: {
         color: "#9B9B9B",
         fontSize: Scale(15),
-        marginTop: Scale(5)
-
+        marginTop: Scale(5),
+        fontFamily: "Metropolis",
     },
     derssSubName: {
         fontSize: Scale(16),
         color: "#222222",
-        marginTop: Scale(5)
+        marginTop: Scale(5),
+        fontFamily: "Metropolis",
+    },
+    disPrice: {
+        fontSize: Scale(14),
+        color: "#DB3022",
+        fontFamily: "Metropolis",
 
     },
-    disPrice:{
-        fontSize:Scale(14),
-        color:"#DB3022"
-    },
-    price:{
-        fontSize:Scale(14),
-        color:"#9B9B9B",
+    price: {
+        fontSize: Scale(14),
+        color: "#9B9B9B",
         textDecorationLine: 'line-through',
-    }
-    
+        fontFamily: "Metropolis",
 
+    }
 });
