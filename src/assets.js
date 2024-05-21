@@ -20,6 +20,12 @@ export const splashimg2 = require("./Assets/globalshop.png");
 export const searchIcon = require("./Assets/search.png");
 export const Myprofile = require("./Assets/Myprofile.png");
 export const forwardImg = require("./Assets/forward.png");
+export const orderImg = require("./Assets/product3.png");
+export const orderImg1 = require("./Assets/product4.png");
+export const orderImg2 = require("./Assets/product2.png");
+
+
+
 
 
 
