@@ -1,19 +1,19 @@
-import { View, Text, TouchableOpacity, Image, StyleSheet, FlatList } from 'react-native'
+import { View, Text, TouchableOpacity, Image, StyleSheet, FlatList, ScrollView } from 'react-native'
 import React from 'react'
 import { backIcon, searchIcon } from '../../assets';
 import Scale from '../../Scale';
-import { orderImg,orderImg1,orderImg2} from '../../assets';
+import { orderImg, orderImg1, orderImg2, masterCard } from '../../assets';
 import { useNavigation } from "@react-navigation/native"
 export default function OrderDetails() {
 
- 
+
   return (
-    <View style={styles.mainContainer}>
+    <ScrollView style={styles.mainContainer}>
       {renderHeader()}
       {renderOrderDetail()}
       {renderListData()}
       {orderInformation()}
-    </View>
+    </ScrollView>
   )
 }
 const renderHeader = () => {
@@ -23,11 +23,11 @@ const renderHeader = () => {
       <TouchableOpacity onPress={() => {
         navigation.goBack();
       }}>
-      <Image source={backIcon} style={styles.Icon} /></TouchableOpacity>
-      <View>
+        <Image source={backIcon} style={styles.Icon} /></TouchableOpacity>
         <Text style={styles.headerTxt}>Order Details</Text>
-      </View>
-      <TouchableOpacity><Image source={searchIcon} style={styles.Icon} /></TouchableOpacity>
+      <TouchableOpacity>
+      <Image source={searchIcon} style={styles.Icon} />
+      </TouchableOpacity>
     </View>
   );
 };
@@ -50,7 +50,7 @@ const cardSecttion = (item) => {
   return (
     <View style={styles.cardContainer}>
       <View>
-        <Image source={item.image} style={styles.cardImg}/>
+        <Image source={item.image} style={styles.cardImg} />
       </View>
       <View style={styles.cardContain}>
         <View style={styles.txtView}>
@@ -105,7 +105,7 @@ const renderListData = () => {
     },
   ];
   return (
-    <View style={{marginTop: Scale(20) }}>
+    <View style={{ marginTop: Scale(20) }}>
       <FlatList
         showsVerticalScrollIndicator={false}
         data={data}
@@ -114,33 +114,79 @@ const renderListData = () => {
     </View>
   );
 };
-const orderInformation=()=>{
-  return(
+const orderInformation = () => {
+  return (
     <View>
-    <Text style={styles.Txt}>Order information</Text>
-    <View style={styles.informationView}>
-    <Text>Shipping Address:</Text>
-    <Text>3 Newbridge Court ,Chino Hills, 
-    CA 91709, United States</Text>
-    </View>
-    <View style={styles.informationView}>
-    <Text>Payment method:</Text>
-    <Text>**** **** **** 3947</Text>
-    </View>
-    <View style={styles.informationView}>
-    <Text>Delivery method:</Text>
-    <Text>FedEx, 3 days, 15$</Text>
-    </View>
-    <View style={styles.informationView}>
-    <Text>Discount:</Text>
-    <Text>FedEx, 3 days, 15$</Text>
-    </View>
-    <View style={styles.informationView}>
-    <Text>Total Amount:</Text>
-    <Text>133$</Text>
-    </View>
-    <View>
-    </View>
+      <Text style={styles.Txt}>Order information</Text>
+      <View style={styles.informationView}>
+      <View style={styles.informationsView}>
+        <Text style={styles.leftTxt}>Shipping Address:</Text>
+        </View>
+        <View style={styles.addressInfromationView}>
+          <Text style={styles.rightTxt}>3 Newbridge Court ,Chino Hills,CA 91709, United States</Text>
+        </View>
+      </View>
+      <View style={styles.informationView}>
+      <View style={styles.informationsView}>
+
+        <Text style={styles.leftTxt}>Payment method:</Text>
+        </View>
+
+        <View style={styles.addressInfromationView}>
+        <View style={styles.cardNoView}>
+
+          <Image source={masterCard} style={styles.masterCardImg} />
+          <Text style={styles.rightTxt}>**** **** **** 3947</Text>
+        </View>
+        </View>
+
+      </View>
+      <View style={styles.informationView}>
+      <View style={styles.informationsView}>
+
+        <Text style={styles.leftTxt}>Delivery method:</Text>
+        </View>
+
+        <View style={styles.addressInfromationView}>
+
+          <Text style={styles.deliveryRightTxt}>FedEx, 3 days, 15$</Text>
+        </View>
+      </View>
+
+      <View style={styles.informationView}>
+      <View style={styles.informationsView}>
+
+        <Text style={styles.leftTxt}>Discount:</Text>
+        </View>
+
+        <View style={styles.addressInfromationView}>
+
+          <Text style={styles.discoutRightTxt}>10%, Personal promo code</Text>
+        </View>
+      </View>
+
+      <View style={styles.informationView}>
+      <View style={styles.informationsView}>
+
+        <Text style={styles.leftTxt}>Total Amount:</Text>
+      </View>
+        
+        <View style={styles.addressInfromationView}>
+
+          <Text style={styles.amountRightTxt}>133$</Text>
+        </View>
+
+      </View>
+      <View>
+      </View>
+      <View style={styles.btnView}>
+        <TouchableOpacity style={styles.reorderBtn}>
+          <Text style={styles.reorderBtnTxt}>Reorder</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.feedbackBtn}>
+          <Text style={styles.feedbackBtnTxt}>Leave feedback</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   )
 }
@@ -148,9 +194,14 @@ const styles = StyleSheet.create({
   Container: {
     backgroundColor: "#f9f9f9",
     justifyContent: "space-between",
+    paddingHorizontal:Scale(10),
     alignItems: "center",
     flexDirection: "row",
     height: Scale(60),
+      shadowColor: "#9B9B9B",
+        shadowOpacity: 2,
+        shadowRadius: 5,     
+        elevation:15,
   },
   Icon: {
     height: Scale(24),
@@ -257,16 +308,96 @@ const styles = StyleSheet.create({
     color: "#222222",
     fontWeight: "bold"
   },
-  Txt:{
-fontFamily: "Metropolis",
-fontSize: 14,
-lineHeight: 20,
+  Txt: {
+    fontFamily: "Metropolis",
+    fontSize: 20,
+    lineHeight: 20,
+    color: "#222222",
+    fontWeight: "bold",
+    marginVertical: 20,
+    marginHorizontal: 15
+  },
+  informationView: {
+    flexDirection: "row",
+    justifyContent:"space-between",
+    marginHorizontal:Scale(15)
+  },
+  leftTxt: {
+    fontSize: 14,
+    color: "#9B9B9B",
+    fontFamily: "Metropolis",
+  },
+  rightTxt: {
+    fontFamily: "Metropolis",
+    fontSize: 14,
+    color: "#222222",
+    marginLeft:5,
+    lineHeight:Scale(20)
+  },
+  cardNoView: {
+    flexDirection: "row",
+    width: Scale(270),
+    alignItems:"center"
+  },
+  masterCardImg: {
+    height: 24,
+    width: 48
+  },
+  amountRightTxt: {
+    fontFamily: "Metropolis",
+    fontSize: 14,
+    color: "#222222",
+  },
+  discoutRightTxt: {
+    fontFamily: "Metropolis",
+    fontSize: 14,
+    color: "#222222",
+  },
+  deliveryRightTxt: {
+    fontFamily: "Metropolis",
+    fontSize: 14,
+    color: "#222222",
+  },
+  reorderBtn: {
+    borderWidth: 1,
+    borderRadius: 24,
+    width: 160,
+    height: 36,
+    // borderColor:"#222222",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  feedbackBtn: {
+    borderRadius: 24,
+    width: 160,
+    height: 36,
+    backgroundColor: "#DB3033",
+    alignItems: "center",
+    justifyContent: "center",
 
   },
-  informationView:{
-    flexDirection:"row",
-    justifyContent:"space-between"
+  btnView: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    marginVertical: 30
+
+  },
+  reorderBtnTxt: {
+    fontFamily: "Metropolis",
+    fontSize: 18,
+    color: "#222222",
+  },
+  feedbackBtnTxt: {
+    fontFamily: "Metropolis",
+    fontSize: 18,
+    color: "#ffff",
+  },
+  informationsView:{
+    width:Scale(157),
+    marginTop:Scale(10),
+  },
+  addressInfromationView:{
+    width: Scale(255),
+    marginTop:Scale(10),
   }
-
-
 })

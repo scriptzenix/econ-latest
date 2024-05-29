@@ -139,7 +139,9 @@ const MyOrder = () => {
             <View style={styles.mainView}>
             <View style={styles.backsearchImageView}
                 >
-            <TouchableOpacity style={styles.touchableOpacityView}>
+            <TouchableOpacity style={styles.touchableOpacityView}  onPress={() => {
+                navigation.goBack();
+              }}>
             <Image source={backIcon} style={styles.backImage} />
           </TouchableOpacity>
             {Input &&(

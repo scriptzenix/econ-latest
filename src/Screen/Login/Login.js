@@ -42,10 +42,10 @@ export default function Login() {
   };
   return (
     <View style={styles.mainContainer}>
-      <TouchableOpacity 
-      onPress={() => {
-        navigation.goBack();
-      }}
+      <TouchableOpacity
+        onPress={() => {
+          navigation.goBack();
+        }}
       >
         <Image source={backIcon} style={styles.Icon} />
       </TouchableOpacity>
@@ -91,17 +91,17 @@ export default function Login() {
         <Text style={styles.btnTxt}>LOGIN</Text>
       </TouchableOpacity>
       <View style={styles.bottomTxt}>
-      <View style={styles.socialacView}>
-        <Text style={styles.socialacTxt}>Or login with social account</Text>
-      </View>
-      <View style={styles.bottombtnView}>
-        <TouchableOpacity>
-          <Image source={google} style={styles.Btn} />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Image source={facebook} style={styles.Btn} />
-        </TouchableOpacity>
-      </View>
+        <View style={styles.socialacView}>
+          <Text style={styles.socialacTxt}>Or login with social account</Text>
+        </View>
+        <View style={styles.bottombtnView}>
+          <TouchableOpacity>
+            <Image source={google} style={styles.Btn} />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Image source={facebook} style={styles.Btn} />
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   )
@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
   },
   headingTxt: {
     fontSize: Scale(34),
-    fontFamily:"Metropolis",
+    fontFamily: "Metropolis",
     fontWeight: "700",
     color: "#000",
     marginTop: Scale(20)
@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     justifyContent: "center",
     fontSize: Scale(15),
-    fontFamily:"Metropolis",
+    fontFamily: "Metropolis",
   },
   btnView: {
     backgroundColor: "#DB3022",
@@ -184,8 +184,8 @@ const styles = StyleSheet.create({
   socialacTxt: {
     color: "#222222",
     fontFamily: "Metropolis",
-fontSize: 20,
-lineHeight: 20,
+    fontSize: 20,
+    lineHeight: 20,
   },
   socialacView: {
     alignItems: "center",
@@ -196,7 +196,7 @@ lineHeight: 20,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    marginTop:Scale(10)
+    marginTop: Scale(10)
   },
   Btn: {
     width: Scale(120),
@@ -208,7 +208,7 @@ lineHeight: 20,
     marginHorizontal: Scale(5),
     fontSize: Scale(16),
     marginTop: Scale(2),
-    fontFamily:"Metropolis",
+    fontFamily: "Metropolis",
   },
   placeholder: {
     position: 'absolute',
@@ -216,7 +216,7 @@ lineHeight: 20,
     left: Scale(12),
     zIndex: -1,
     fontSize: Scale(16),
-    fontFamily:"Metropolis",
+    fontFamily: "Metropolis",
   },
   placeholderShifted: {
     top: Scale(2),
@@ -232,9 +232,9 @@ lineHeight: 20,
     color: "red",
     marginHorizontal: Scale(5)
   },
-  bottomTxt:{
-    flex:0.9,
-   justifyContent:"flex-end",
-   alignItems:"center",
+  bottomTxt: {
+    flex: 0.9,
+    justifyContent: "flex-end",
+    alignItems: "center",
   }
 })

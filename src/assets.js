@@ -23,6 +23,7 @@ export const forwardImg = require("./Assets/forward.png");
 export const orderImg = require("./Assets/product3.png");
 export const orderImg1 = require("./Assets/product4.png");
 export const orderImg2 = require("./Assets/product2.png");
+export const masterCard = require("./Assets/mastercard.png");
 
 
 

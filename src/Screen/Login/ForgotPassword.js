@@ -31,10 +31,10 @@ export default function ForgotPassword() {
   const navigation = useNavigation();
   return (
     <View style={styles.mainContainer}>
-      <TouchableOpacity 
-      onPress={() => {
-        navigation.goBack();
-      }}>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.goBack();
+        }}>
         <Image source={backIcon} style={styles.Icon} />
       </TouchableOpacity>
       <Text style={styles.headingTxt}>Forgot password</Text>
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     color: "#000",
     marginTop: Scale(20),
-    fontFamily:"Metropolis",
+    fontFamily: "Metropolis",
 
   },
   textInputView: {
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
   acTxt: {
     fontSize: Scale(18),
     color: "#222222",
-    fontFamily:"Metropolis",
+    fontFamily: "Metropolis",
 
   },
   forwardIcon: {
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     justifyContent: "center",
     fontSize: Scale(15),
-    fontFamily:"Metropolis",
+    fontFamily: "Metropolis",
   },
   btnView: {
     backgroundColor: "#DB3022",
@@ -140,8 +140,8 @@ const styles = StyleSheet.create({
   socialacTxt: {
     color: "#222222",
     fontFamily: "Metropolis",
-fontSize: 20,
-lineHeight: 20,
+    fontSize: 20,
+    lineHeight: 20,
   },
   socialacView: {
     alignItems: "center",
@@ -167,7 +167,7 @@ lineHeight: 20,
     fontSize: 19,
     color: "#222222",
     lineHeight: 24,
-    fontFamily:"Metropolis",
+    fontFamily: "Metropolis",
   },
   placeholder: {
     position: 'absolute',
@@ -175,13 +175,13 @@ lineHeight: 20,
     left: Scale(12),
     zIndex: -1,
     fontSize: Scale(16),
-    fontFamily:"Metropolis",
+    fontFamily: "Metropolis",
   },
   placeholderShifted: {
     top: Scale(-1),
     fontSize: Scale(16),
     justifyContent: "center",
-    fontFamily:"Metropolis",
+    fontFamily: "Metropolis",
 
   },
   textInputError: {

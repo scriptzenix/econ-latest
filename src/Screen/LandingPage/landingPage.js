@@ -57,7 +57,7 @@ const renderItem = ({ item }) => (
 const flatist = () => {
     const data = [
         {
-            id: '1', // Unique identifier for each item
+            id: '1',
             image: product1,
             derssName: "Dorothy Perkins",
             derssSubName: "Evening Dress",
@@ -66,7 +66,7 @@ const flatist = () => {
             new: "NEW"
         },
         {
-            id: '2', // Unique identifier for each item
+            id: '2',
             image: Tshirt,
             derssName: "Dorothy Perkins",
             derssSubName: "Evening Dress",
@@ -75,7 +75,7 @@ const flatist = () => {
             new: "NEW"
         },
         {
-            id: '3', // Unique identifier for each item
+            id: '3',
             image: product1,
             derssName: "Dorothy Perkins",
             derssSubName: "Evening Dress",
@@ -84,7 +84,7 @@ const flatist = () => {
             new: "NEW"
         },
         {
-            id: '4', // Unique identifier for each item
+            id: '4',
             image: Tshirt,
             derssName: "Dorothy Perkins",
             derssSubName: "Evening Dress",
@@ -92,7 +92,7 @@ const flatist = () => {
             DiscountPrice: "12$",
             new: "NEW"
         },
-        // Add id for other items
+
     ];
     return (
         <FlatList showsHorizontalScrollIndicator={false}

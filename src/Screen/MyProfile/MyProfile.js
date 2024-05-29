@@ -90,7 +90,7 @@ rederDetail = () => {
                 <TouchableOpacity>
                     <Image source={forwardImg} style={styles.forwardImg} /></TouchableOpacity>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.container} onPress={() => navigation.navigate('MyOrders')}>
+            <TouchableOpacity style={styles.container} onPress={() => navigation.navigate('Setting')}>
                 <View>
                     <Text style={styles.myorderTxt}>Settings</Text>
                     <Text style={styles.subTxt}>Notifications, password</Text>
