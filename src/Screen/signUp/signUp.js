@@ -37,7 +37,8 @@ export default function SignUp() {
     if (!password.trim()) {
       setpasswordError('Password is required');
       isValid = false;
-    } else if (password.length < 6) {
+    } 
+    else if (password.length < 6) {
       setpasswordError('Password must be at least 6 characters long');
       isValid = false;
     } else {
@@ -144,8 +145,8 @@ const styles = StyleSheet.create({
     marginHorizontal: Scale(15)
   },
   Icon: {
-    height: Scale(24),
-    width: Scale(24),
+    height: Scale(20),
+    width: Scale(20),
   },
   headingTxt: {
     fontSize: Scale(34),
