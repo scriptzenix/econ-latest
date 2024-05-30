@@ -24,6 +24,10 @@ export const orderImg = require("./Assets/product3.png");
 export const orderImg1 = require("./Assets/product4.png");
 export const orderImg2 = require("./Assets/product2.png");
 export const masterCard = require("./Assets/mastercard.png");
+export const clothes = require("./Assets/clothes.png");
+export const shoes = require("./Assets/shoes.png");
+export const Neew = require("./Assets/Neew.png");
+export const Accesories = require("./Assets/Accesories.png");
 
 
 
