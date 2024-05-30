@@ -103,7 +103,7 @@ export default function SignUp() {
 
           >Password</Text>
 
-          <TextInput
+          <TextInputgit
             autoCapitalize='none' keyboardType="visible-password" style={styles.textInput}
             value={password}
             onChangeText={text => setPassword(text)}
@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
     marginHorizontal: Scale(15)
   },
   Icon: {
-    
+
     height: Scale(20),
     width: Scale(20),
   },
