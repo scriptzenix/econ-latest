@@ -13,7 +13,9 @@ import MyProfile from '../Screen/MyProfile/MyProfile';
 import MyOrders from '../Screen/MyProfile/MyOrders';
 import OrderDetails from '../Screen/MyProfile/OrderDetails';
 import Setting from '../Screen/Settings/Settings';
-import Categories from '../Screen/LandingPage/Categories';
+import Categories from '../Screen/Categories/Categories';
+import Catalog from '../Screen/Categories/Catalog';
+
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 const ProfileStack = createStackNavigator();
@@ -21,13 +23,12 @@ const ProfileStack = createStackNavigator();
 function App() {
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName="Categories" screenOptions={{ headerShown: false }}>
+            <Stack.Navigator initialRouteName="Main" screenOptions={{ headerShown: false }}>
                 <Stack.Screen name="Splash" component={Splash} />
                 <Stack.Screen name="SignUp" component={SignUp} />
                 <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
                 <Stack.Screen name="Main" component={MainTabScreen} />
                 <Stack.Screen name="Setting" component={Setting} />
-                <Stack.Screen name="Categories" component={Categories} />
             </Stack.Navigator>
         </NavigationContainer> 
     );
@@ -59,8 +60,8 @@ function MainTabScreen() {
                 }}
             />
             <Tab.Screen
-                name="SignUp"
-                component={SignUp}
+                name="Categories"
+                component={Categories}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Image
@@ -71,8 +72,8 @@ function MainTabScreen() {
                 }}
             />
             <Tab.Screen
-                name="Login"
-                component={Login}
+                name="Catalog"
+                component={Catalog}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Image
@@ -104,7 +105,6 @@ function ProfileStackScreen() {
             <ProfileStack.Screen name="MyProfile" component={MyProfile} />
             <ProfileStack.Screen name="MyOrders" component={MyOrders} />
             <ProfileStack.Screen name="OrderDetails" component={OrderDetails} />
-            <ProfileStack.Screen name="Categories" component={Categories} />
         </ProfileStack.Navigator>
     );
 }

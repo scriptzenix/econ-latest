@@ -28,6 +28,14 @@ export const clothes = require("./Assets/clothes.png");
 export const shoes = require("./Assets/shoes.png");
 export const Neew = require("./Assets/Neew.png");
 export const Accesories = require("./Assets/Accesories.png");
+export const filterIcon = require("./Assets/filter.png");
+export const priceFiter = require("./Assets/priceFilter.png");
+export const sideBarIcon = require("./Assets/sideBar.png");
+export const heartIcon = require("./Assets/heartIcon.png");
+export const Shape = require("./Assets/Shape.png");
+export const bg = require("./Assets/bg.png");
+
+
 
 
 
