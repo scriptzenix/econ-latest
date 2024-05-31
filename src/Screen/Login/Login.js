@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { backIcon, rightIcon, forwardIcon, google, facebook } from "../../assets"
 import Scale from '../../Scale'
 import { useNavigation } from '@react-navigation/native'
+import CustomButton from '../../Components/Button'
 export default function Login() {
   const navigation = useNavigation();
   const [email, setEmail] = useState('');
@@ -87,9 +88,8 @@ export default function Login() {
           <Image source={forwardIcon} style={styles.forwardIcon} />
         </TouchableOpacity>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.btnView} onPress={loginHandler}>
-        <Text style={styles.btnTxt}>LOGIN</Text>
-      </TouchableOpacity>
+      <CustomButton BtnName={"LOGIN"}/>
+
       <View style={styles.bottomTxt}>
         <View style={styles.socialacView}>
           <Text style={styles.socialacTxt}>Or login with social account</Text>
@@ -163,23 +163,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginTop: Scale(5)
-  },
-  btnTxt: {
-    color: "#FFFFFF",
-    textAlign: "center",
-    justifyContent: "center",
-    fontSize: Scale(15),
-    fontFamily: "Metropolis",
-  },
-  btnView: {
-    backgroundColor: "#DB3022",
-    borderRadius: Scale(25),
-    width: Scale(400),
-    height: Scale(48),
-    alignItems: "center",
-    justifyContent: "center",
-    // marginHorizontal: Scale(20),
-    marginTop: Scale(30)
   },
   socialacTxt: {
     color: "#222222",

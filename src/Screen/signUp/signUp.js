@@ -3,6 +3,7 @@ import { Text, View, TouchableOpacity, Image, StyleSheet, TextInput } from 'reac
 import { backIcon, rightIcon, forwardIcon, facebook, google } from "../../assets"
 import Scale from '../../Scale';
 import { useNavigation } from '@react-navigation/native';
+import CustomButton from '../../Components/Button';
 export default function SignUp() {
   const navigation = useNavigation();
   const [name, setName] = useState('');
@@ -46,9 +47,28 @@ export default function SignUp() {
 
     return isValid;
   };
-  const signUpHandler = () => {
+  const  signUpHandler = async() => {
     if (validateInputs()) {
-      navigation.navigate('login');
+      event.preventDefault();
+      try {
+          const response = await axios.post(
+              'https://ecommerce-application-wsic.onrender.com/users/sign_up', 
+              { name, email, password },
+              {
+                  headers: {
+                      'Content-Type': 'application/json',
+                      'Cache-Control': 'no-cache',
+                      'Pragma': 'no-cache',
+                      'Expires': '0',
+                  }
+              }
+          );
+          console.log('Sign up successful:', response.data);
+      // navigation.navigate('login');
+
+      } catch (error) {
+          console.error('Error signing up:', error);
+      }
     }
   };
   return (
@@ -112,15 +132,16 @@ export default function SignUp() {
         {passwordError ? <Text style={styles.errorText}>{passwordError}</Text> : null}
 
       </View>
-      <TouchableOpacity style={styles.linkView} onPress={() => navigation.navigate('login')}>
+      <TouchableOpacity style={styles.linkView} onPress={() => navigation.navigate('Login')}>
         <Text style={styles.acTxt}>Already have an account?</Text>
         <TouchableOpacity>
           <Image source={forwardIcon} style={styles.forwardIcon} />
         </TouchableOpacity>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.btnView} onPress={signUpHandler}>
-        <Text style={styles.btnTxt}>SIGN UP</Text>
-      </TouchableOpacity>
+      <CustomButton BtnName={"SIGN UP"}
+        handlePress={signUpHandler}
+      />
+
       <View style={styles.bottomTxt}>
         <View style={styles.socialacView}>
           <Text style={styles.socialacTxt}>Or login with social account</Text>
@@ -194,23 +215,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginTop: Scale(5)
-  },
-  btnTxt: {
-    color: "#FFFFFF",
-    textAlign: "center",
-    justifyContent: "center",
-    fontSize: Scale(15),
-    fontFamily: "Metropolis",
-
-  },
-  btnView: {
-    backgroundColor: "#DB3022",
-    borderRadius: Scale(25),
-    width: Scale(400),
-    height: Scale(48),
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: Scale(30)
   },
   socialacTxt: {
     color: "#222222",

@@ -281,7 +281,7 @@ const styles = StyleSheet.create({
     },
     settings: {
         fontSize: Scale(34),
-        color: "#22222",
+        color: "#222222",
         fontWeight: "bold",
         marginLeft: Scale(20),
         marginTop: Scale(20)

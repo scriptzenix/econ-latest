@@ -3,6 +3,7 @@ import React from 'react'
 import { Fashionimg, image, product, Tshirt, product1 } from '../../assets';
 import Scale from '../../Scale';
 import { Rating } from 'react-native-ratings';
+import CustomButton from '../../Components/Button';
 export default function LandingPage() {
 
     return (
@@ -10,9 +11,12 @@ export default function LandingPage() {
         <ScrollView style={styles.container}>
             <ImageBackground source={image} resizeMode="cover" style={styles.bgimage}>
                 <Image source={Fashionimg} resizeMode='contain' style={styles.fImg} />
-                <TouchableOpacity style={styles.checkBtn}>
-                    <Text style={styles.checkBtnTxt}>Check</Text>
-                </TouchableOpacity>
+               <CustomButton 
+               BtnName='check' 
+               btnStyle={styles.checkBtn}
+
+               />
+               
             </ImageBackground>
             <View style={styles.middleContainer}>
                 <Text style={styles.txtNew}>New</Text>
@@ -123,13 +127,8 @@ const styles = StyleSheet.create({
         fontFamily: "Metropolis",
     },
     checkBtn: {
-        backgroundColor: "red",
         height: Scale(38),
         width: Scale(160),
-        borderRadius: Scale(25),
-        justifyContent: "center",
-        alignItems: "center",
-        marginHorizontal: Scale(10),
         marginBottom: Scale(20)
     },
     middleContainer: {

@@ -2,7 +2,8 @@ import { Text, View, StyleSheet, TouchableOpacity, Image, TextInput } from 'reac
 import React, { useState } from 'react'
 import Scale from '../../Scale'
 import { backIcon, rightIcon, closeIcon } from '../../assets'
-import { useNavigation } from '@react-navigation/native'
+import CustomButton from '../../Components/Button'
+import { useNavigation } from '@react-navigation/native';
 export default function ForgotPassword() {
   const [email, setEmail] = useState('');
   const [emailError, setemailError] = useState('');
@@ -56,10 +57,9 @@ export default function ForgotPassword() {
         {emailError ? <Text style={styles.errorText}>{emailError}</Text> : null}
 
       </View>
+      <CustomButton BtnName={"SEND"}
+      />
 
-      <TouchableOpacity style={styles.btnView} onPress={handleSendPress}>
-        <Text style={styles.btnTxt}>SEND</Text>
-      </TouchableOpacity>
     </View>
   )
 }
@@ -120,22 +120,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginTop: Scale(8)
-  },
-  btnTxt: {
-    color: "#FFFFFF",
-    textAlign: "center",
-    justifyContent: "center",
-    fontSize: Scale(15),
-    fontFamily: "Metropolis",
-  },
-  btnView: {
-    backgroundColor: "#DB3022",
-    borderRadius: Scale(25),
-    width: Scale(400),
-    height: Scale(48),
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: Scale(30)
   },
   socialacTxt: {
     color: "#222222",

@@ -71,17 +71,17 @@ const Catalog = () => {
     const filteMenu = () => {
         return (
             <View style={styles.menuConatiner}>
-                <View style={styles.FiterView}>
+                <TouchableOpacity style={styles.FiterView}>
                     <Image source={sideBarIcon} style={styles.backImage} />
                     <Text>Filter</Text>
-                </View>
-                <View style={styles.FiterView}>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.FiterView}>
                     <Image source={priceFiter} style={styles.backImage} />
                     <Text>Price: lowest to high</Text>
-                </View>
-                <View>
+                </TouchableOpacity>
+                <TouchableOpacity>
                     <Image source={filterIcon} style={styles.backImage} />
-                </View>
+                </TouchableOpacity>
             </View>
         )
     }
@@ -91,9 +91,6 @@ const Catalog = () => {
                 image: orderImg,
                 Name: "Pullover",
                 subName: "Mango",
-                color: "Gray",
-                size: "L",
-                quantity: "3",
                 totalAmount: "112$",
                 icon: heartIcon
             },
@@ -102,9 +99,6 @@ const Catalog = () => {
                 date: "05-12-2019",
                 Name: "Pullover",
                 subName: "Mango",
-                color: "Gray",
-                size: "L",
-                quantity: "3",
                 totalAmount: "112$",
                 icon: heartIcon,
                 bgImg: bg
@@ -113,9 +107,6 @@ const Catalog = () => {
                 image: orderImg2,
                 Name: "Pullover",
                 subName: "Mango",
-                color: "Gray",
-                size: "L",
-                quantity: "3",
                 totalAmount: "112$",
                 icon: Shape,
                 bgImg: bg
@@ -124,9 +115,6 @@ const Catalog = () => {
                 image: orderImg,
                 Name: "Pullover",
                 subName: "Mango",
-                color: "Gray",
-                size: "L",
-                quantity: "3",
                 totalAmount: "112$",
                 icon: heartIcon,
                 bgImg: bg

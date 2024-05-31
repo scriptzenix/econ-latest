@@ -23,12 +23,14 @@ const ProfileStack = createStackNavigator();
 function App() {
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName="Main" screenOptions={{ headerShown: false }}>
+            <Stack.Navigator initialRouteName="Splash" screenOptions={{ headerShown: false }}>
                 <Stack.Screen name="Splash" component={Splash} />
                 <Stack.Screen name="SignUp" component={SignUp} />
                 <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
                 <Stack.Screen name="Main" component={MainTabScreen} />
                 <Stack.Screen name="Setting" component={Setting} />
+                <Stack.Screen name="Catalog" component={Catalog} />
+                <Stack.Screen name="Login" component={Login} />
             </Stack.Navigator>
         </NavigationContainer> 
     );
@@ -72,8 +74,8 @@ function MainTabScreen() {
                 }}
             />
             <Tab.Screen
-                name="Catalog"
-                component={Catalog}
+                name="SignUp"
+                component={SignUp}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Image
@@ -105,6 +107,7 @@ function ProfileStackScreen() {
             <ProfileStack.Screen name="MyProfile" component={MyProfile} />
             <ProfileStack.Screen name="MyOrders" component={MyOrders} />
             <ProfileStack.Screen name="OrderDetails" component={OrderDetails} />
+            <ProfileStack.Screen name="Catalog" component={Catalog} />
         </ProfileStack.Navigator>
     );
 }
