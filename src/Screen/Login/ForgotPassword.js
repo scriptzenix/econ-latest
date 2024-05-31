@@ -10,7 +10,6 @@ export default function ForgotPassword() {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const validateEmail = () => {
     let isValid = true;
-
     if (!email.trim()) {
       setemailError('Email is required');
       isValid = false;
@@ -20,13 +19,30 @@ export default function ForgotPassword() {
     } else {
       setemailError('');
     }
-
     return isValid;
   };
 
-  const handleSendPress = () => {
+  const handleSendPress = async() => {
+    const token = localStorage.getItem("token");
     if (validateEmail()) {
-      // Proceed with sending email logic
+      try {
+        const response = await axios.post(
+            'https://ecommerce-application-wsic.onrender.com/users/forgot_password', 
+            {email},
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`,
+                }
+            }
+        );
+        console.log("token is", token);
+        console.log('ForgotPassword  successful:', response.data);
+    navigation.navigate("Login");
+
+    } catch (error) {
+        console.error('Error ForgotPassword:', error);
+    }
     }
   };
   const navigation = useNavigation();
@@ -58,8 +74,8 @@ export default function ForgotPassword() {
 
       </View>
       <CustomButton BtnName={"SEND"}
+      handlePress={handleSendPress}
       />
-
     </View>
   )
 }

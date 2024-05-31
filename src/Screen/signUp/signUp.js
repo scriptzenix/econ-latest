@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import { Text, View, TouchableOpacity, Image, StyleSheet, TextInput } from 'react-native'
+import { Text, View, TouchableOpacity, Image, StyleSheet, TextInput, Alert } from 'react-native'
 import { backIcon, rightIcon, forwardIcon, facebook, google } from "../../assets"
 import Scale from '../../Scale';
 import { useNavigation } from '@react-navigation/native';
 import CustomButton from '../../Components/Button';
+import axios from 'axios';
 export default function SignUp() {
   const navigation = useNavigation();
   const [name, setName] = useState('');
@@ -47,30 +48,30 @@ export default function SignUp() {
 
     return isValid;
   };
+
   const  signUpHandler = async() => {
     if (validateInputs()) {
-      event.preventDefault();
-      try {
-          const response = await axios.post(
-              'https://ecommerce-application-wsic.onrender.com/users/sign_up', 
-              { name, email, password },
-              {
-                  headers: {
-                      'Content-Type': 'application/json',
-                      'Cache-Control': 'no-cache',
-                      'Pragma': 'no-cache',
-                      'Expires': '0',
-                  }
-              }
-          );
-          console.log('Sign up successful:', response.data);
-      // navigation.navigate('login');
+    // event.preventDefault();
+    try {
+        const response = await axios.post(
+            'https://ecommerce-application-wsic.onrender.com/users/sign_up', 
+            { name, email, password },
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            }
+        );
+        console.log('Sign up successful:', response.data);
+    navigation.navigate("LandingPage");
 
-      } catch (error) {
-          console.error('Error signing up:', error);
-      }
+    } catch (error) {
+        console.error('Error signing up:', error);
+    }
     }
   };
+
+
   return (
     <View style={styles.mainContainer}>
       <TouchableOpacity onPress={() => {
@@ -138,10 +139,10 @@ export default function SignUp() {
           <Image source={forwardIcon} style={styles.forwardIcon} />
         </TouchableOpacity>
       </TouchableOpacity>
-      <CustomButton BtnName={"SIGN UP"}
-        handlePress={signUpHandler}
-      />
-
+      <CustomButton
+      BtnName="SIGN UP"
+       handlePress={signUpHandler}
+       />
       <View style={styles.bottomTxt}>
         <View style={styles.socialacView}>
           <Text style={styles.socialacTxt}>Or login with social account</Text>

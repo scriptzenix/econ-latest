@@ -2,10 +2,10 @@ import * as React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import Login from '../Screen/Login/Login';
-import SignUp from '../Screen/SignUp/SignUp';
+import SignUp from '../Screen/SignUp/signUp';
 import ForgotPassword from '../Screen/Login/ForgotPassword';
-import LandingPage from '../Screen/LandingPage/LandingPage';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import LandingPage from '../Screen/LandingPage/landingPage';
+import { BottomTabBar, BottomTabView, createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Image, StyleSheet } from 'react-native';
 import { Home, shop, bag, profile } from '../assets';
 import Splash from '../Screen/SplashScreen/Splash';
@@ -25,12 +25,13 @@ function App() {
         <NavigationContainer>
             <Stack.Navigator initialRouteName="Splash" screenOptions={{ headerShown: false }}>
                 <Stack.Screen name="Splash" component={Splash} />
-                <Stack.Screen name="SignUp" component={SignUp} />
                 <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
                 <Stack.Screen name="Main" component={MainTabScreen} />
                 <Stack.Screen name="Setting" component={Setting} />
                 <Stack.Screen name="Catalog" component={Catalog} />
                 <Stack.Screen name="Login" component={Login} />
+                <Stack.Screen name="SignUp" component={SignUp} />
+                <Stack.Screen name="LandingPage" component={LandingPage}/>
             </Stack.Navigator>
         </NavigationContainer> 
     );

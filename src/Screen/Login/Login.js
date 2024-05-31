@@ -4,6 +4,7 @@ import { backIcon, rightIcon, forwardIcon, google, facebook } from "../../assets
 import Scale from '../../Scale'
 import { useNavigation } from '@react-navigation/native'
 import CustomButton from '../../Components/Button'
+import axios from 'axios';
 export default function Login() {
   const navigation = useNavigation();
   const [email, setEmail] = useState('');
@@ -36,9 +37,49 @@ export default function Login() {
 
     return isValid;
   };
-  const loginHandler = () => {
+  // const loginHandler = async () => {
+  //   if (validateInputs()) {
+  //     try {
+  //       const response = await axios.post(
+  //         'https://ecommerce-application-wsic.onrender.com/users/login',
+  //         { email, password },
+  //         {
+  //           headers: {
+  //             'Content-Type': 'application/json',
+  //           }
+  //         }
+  //       );
+  //       console.log('Login up successful:', response.data);
+  //       navigation.navigate("LandingPage");
+  //       // navigation.navigate('/sign')
+
+
+  //     } catch (error) {
+  //       console.error('Error login up:', error);
+  //     }
+  //   }
+  // };
+
+  const loginHandler = async () => {
     if (validateInputs()) {
-      navigation.navigate('/sign')
+      try {
+        console.log('Sending login request to server...');
+        const response = await axios.post(
+          'https://ecommerce-application-wsic.onrender.com/users/login',
+          { email, password },
+          {
+            headers: {
+              'Content-Type': 'application/json',
+            }
+          }
+        );
+        const {Token} = response.data;
+        localStorage.setItem('Token',Token);
+        console.log('Login successful:', response.data);
+        navigation.navigate("LandingPage");
+      } catch (error) {
+        console.error('Error logging in:', error);
+      }
     }
   };
   return (
@@ -88,7 +129,9 @@ export default function Login() {
           <Image source={forwardIcon} style={styles.forwardIcon} />
         </TouchableOpacity>
       </TouchableOpacity>
-      <CustomButton BtnName={"LOGIN"}/>
+      <CustomButton BtnName={"LOGIN"}
+        handlePress={loginHandler}
+      />
 
       <View style={styles.bottomTxt}>
         <View style={styles.socialacView}>

@@ -34,11 +34,7 @@ export const sideBarIcon = require("./Assets/sideBar.png");
 export const heartIcon = require("./Assets/heartIcon.png");
 export const Shape = require("./Assets/Shape.png");
 export const bg = require("./Assets/bg.png");
-export const splashImg1 = require("./Assets/splashImg.png");
-
-
-
-
+export const splashImg1 = require("./Assets/splashImg1.png");
 
 
 

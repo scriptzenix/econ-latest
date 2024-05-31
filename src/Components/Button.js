@@ -7,7 +7,7 @@ const CustomButton = (props) => {
     const {BtnName,handlePress,btnStyle,textStyle} = props;
 
   return (
-                <TouchableOpacity style={[styles.checkBtn,btnStyle]} onPress={() => navigation.navigate(handlePress)}>
+                <TouchableOpacity style={[styles.checkBtn,btnStyle]} onPress={handlePress}>
                     <Text style={[styles.checkBtnTxt,textStyle]}>{BtnName}</Text>
                 </TouchableOpacity>
   )

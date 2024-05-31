@@ -5,14 +5,15 @@ import Swiper from 'react-native-swiper'
 import CustomButton from '../../Components/Button';
 import { useNavigation } from '@react-navigation/native';
 import Scale from '../../Scale';
-const Splash = ({ navigation }) => {
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      navigation.navigate("/");
-    }, 5000);
+const Splash = () => {
+    const navigation = useNavigation();
+//   useEffect(() => {
+//     const timeout = setTimeout(() => {
+//       navigation.navigate("/");
+//     }, 5000);
   
-    return () => clearTimeout(timeout);
-  }, [navigation]); 
+//     return () => clearTimeout(timeout);
+//   }, [navigation]); 
 
     return (
       <Swiper autoplay={false} style={styles.wrapper} 
@@ -22,20 +23,20 @@ const Splash = ({ navigation }) => {
       >
         <View style={styles.container}>
             <Image source={splashimg} style={styles.image} />
-            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main')}>
+            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('LandingPage')}>
                 <Text style={styles.buttonText}>Continue</Text>
             </TouchableOpacity>
         </View>
         <View style={styles.container}>
         <ImageBackground source={splashImg1} style={styles.image1}>
        <CustomButton
-        BtnName="SIGN UP"
-         handlePress={"SignUp"}
+        BtnName="Sign-up"
+         handlePress={() => navigation.navigate('SignUp')}
 
          />
        <CustomButton 
        BtnName="Login" 
-       handlePress={"Login"}
+       handlePress={() => navigation.navigate('Login')}
        btnStyle={styles.loginBtn}
        textStyle={styles.loginBtnTxt}/>
 
