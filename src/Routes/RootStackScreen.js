@@ -15,7 +15,7 @@ import OrderDetails from '../Screen/MyProfile/OrderDetails';
 import Setting from '../Screen/Settings/Settings';
 import Categories from '../Screen/Categories/Categories';
 import Catalog from '../Screen/Categories/Catalog';
-
+import ProductCard from '../Screen/Categories/ProductCard';
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 const ProfileStack = createStackNavigator();
@@ -23,7 +23,7 @@ const ProfileStack = createStackNavigator();
 function App() {
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName="Splash" screenOptions={{ headerShown: false }}>
+            <Stack.Navigator initialRouteName="ProductCard" screenOptions={{ headerShown: false }}>
                 <Stack.Screen name="Splash" component={Splash} />
                 <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
                 <Stack.Screen name="Main" component={MainTabScreen} />
@@ -31,7 +31,8 @@ function App() {
                 <Stack.Screen name="Catalog" component={Catalog} />
                 <Stack.Screen name="Login" component={Login} />
                 <Stack.Screen name="SignUp" component={SignUp} />
-                <Stack.Screen name="LandingPage" component={LandingPage}/>
+                <Stack.Screen name="ProductCard" component={ProductCard} />
+
             </Stack.Navigator>
         </NavigationContainer> 
     );

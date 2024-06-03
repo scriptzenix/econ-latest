@@ -46,8 +46,7 @@ const renderItem = ({ item }) => (
                 onFinishRating={this.ratingCompleted}
                 defaultRating={0}
                 onStartRating={0}
-                style={styles.rating}
-            />
+                style={styles.rating}/>
         </View>
         <Text style={styles.derssName}>{item.derssName}</Text>
         <Text style={styles.derssSubName}>{item.derssSubName}</Text>
@@ -188,6 +187,8 @@ const styles = StyleSheet.create({
     rating: {
         alignSelf: "flex-start",
         marginTop: Scale(10),
+        // backgroundColor:"transparent"
+        
     },
     priceView: {
         flexDirection: "row",

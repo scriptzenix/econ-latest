@@ -16,7 +16,7 @@ renderHeader = () => {
     const [search, setSearch] = useState("");
     return (
         <View style={styles.mainView}>
-            <View style={[styles.backsearchImageView,{justifyContent:"flex-end",marginTop:Scale(5)}]}>
+            <View style={[styles.backsearchImageView, { justifyContent: "flex-end", marginTop: Scale(5) }]}>
 
                 {Input && (
                     <View style={styles.txtInput}>
@@ -30,8 +30,8 @@ renderHeader = () => {
                         />
                     </View>
                 )}
-                <TouchableOpacity onPress={() => setInput(!Input)} style={{alignSelf:Input?"center":"flex-end"}}>
-                    <Image source={searchIcon} style={styles.searchIcon}/>
+                <TouchableOpacity onPress={() => setInput(!Input)} style={{ alignSelf: Input ? "center" : "flex-end" }}>
+                    <Image source={searchIcon} style={styles.searchIcon} />
                 </TouchableOpacity>
             </View>
             <Text style={styles.myProfileText}>My profile</Text>
@@ -58,6 +58,7 @@ rederDetail = () => {
                 <TouchableOpacity>
                     <Image source={forwardImg} style={styles.forwardImg} /></TouchableOpacity>
             </TouchableOpacity>
+            <View style={styles.dividerView} />
             <TouchableOpacity style={styles.container} onPress={() => navigation.navigate('MyOrders')}>
                 <View>
                     <Text style={styles.myorderTxt}>Shipping addresses</Text>
@@ -66,6 +67,8 @@ rederDetail = () => {
                 <TouchableOpacity>
                     <Image source={forwardImg} style={styles.forwardImg} /></TouchableOpacity>
             </TouchableOpacity>
+            <View style={styles.dividerView} />
+
             <TouchableOpacity style={styles.container} onPress={() => navigation.navigate('MyOrders')}>
                 <View>
                     <Text style={styles.myorderTxt}>Payment methods</Text>
@@ -74,6 +77,8 @@ rederDetail = () => {
                 <TouchableOpacity>
                     <Image source={forwardImg} style={styles.forwardImg} /></TouchableOpacity>
             </TouchableOpacity>
+            <View style={styles.dividerView} />
+
             <TouchableOpacity style={styles.container} onPress={() => navigation.navigate('MyOrders')}>
                 <View>
                     <Text style={styles.myorderTxt}>Promocodes</Text>
@@ -82,6 +87,8 @@ rederDetail = () => {
                 <TouchableOpacity>
                     <Image source={forwardImg} style={styles.forwardImg} /></TouchableOpacity>
             </TouchableOpacity>
+            <View style={styles.dividerView} />
+
             <TouchableOpacity style={styles.container} onPress={() => navigation.navigate('MyOrders')}>
                 <View>
                     <Text style={styles.myorderTxt}>My reviews</Text>
@@ -90,6 +97,8 @@ rederDetail = () => {
                 <TouchableOpacity>
                     <Image source={forwardImg} style={styles.forwardImg} /></TouchableOpacity>
             </TouchableOpacity>
+            <View style={styles.dividerView} />
+
             <TouchableOpacity style={styles.container} onPress={() => navigation.navigate('Setting')}>
                 <View>
                     <Text style={styles.myorderTxt}>Settings</Text>
@@ -98,6 +107,8 @@ rederDetail = () => {
                 <TouchableOpacity>
                     <Image source={forwardImg} style={styles.forwardImg} /></TouchableOpacity>
             </TouchableOpacity>
+            <View style={styles.dividerView} />
+
         </View>
     )
 }
@@ -111,13 +122,13 @@ const styles = StyleSheet.create({
         marginHorizontal: Scale(15),
     },
     backsearchImageView: {
-        flexDirection:"row",
-        flex:1
+        flexDirection: "row",
+        flex: 1
     },
     searchIcon: {
         height: Scale(40),
         width: Scale(18),
-        resizeMode:"contain"
+        resizeMode: "contain"
     },
     height: Scale(40),
     width: Scale(350),
@@ -156,7 +167,12 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: "row",
         justifyContent: "space-between",
-        marginVertical: Scale(20)
+        marginVertical: Scale(20),
+
+    },
+    dividerView: {
+        borderBottomWidth: 0.2,
+        borderBottomColor: "#9B9B9B"
     },
     forwardImg: {
         height: Scale(12),
@@ -186,7 +202,7 @@ const styles = StyleSheet.create({
         width: Scale(350),
         borderColor: "#ededed",
         borderRadius: 5,
-        marginRight:Scale(10),
+        marginRight: Scale(10),
         backgroundColor: "#fff",
         justifyContent: "center",
         shadowColor: "blue",
@@ -196,7 +212,6 @@ const styles = StyleSheet.create({
             height: 5,
             width: 5,
         },
-        // marginTop:Scale(10)
-    }
+    },
 
 })

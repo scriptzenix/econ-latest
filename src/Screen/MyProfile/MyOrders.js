@@ -3,6 +3,7 @@ import { Text, StyleSheet, View, Image, TouchableOpacity,TextInput, FlatList } f
 import Scale from '../../Scale';
 import { searchIcon, backIcon } from '../../assets';
 import { useNavigation } from '@react-navigation/native';
+import CustomButton from '../../Components/Button';
 const MyOrder = () => {
     const [delivered, setDelivered] = useState(true);
     const [processing, setProcessing] = useState(false);
@@ -228,10 +229,13 @@ const MyOrder = () => {
                         <Text style={styles.trackingnoText}>Total Amount:<Text style={styles.trackingnoTextno}>  {item.totalAmount}</Text></Text>
                     </View>
                     <View style={styles.buttonView}>
-                        <TouchableOpacity style={styles.detailBtn} 
-                        onPress={() => navigation.navigate('OrderDetails')}>
-                            <Text style={styles.details}>{item.details}</Text>
-                        </TouchableOpacity>
+                        <CustomButton 
+                        BtnName={item.details} 
+                        handlePress={() => navigation.navigate('OrderDetails')} 
+                        btnStyle={styles.detailBtn}
+                        textStyle={styles.details}
+
+                        />
                         <Text style={styles.delivertTxt}>{item.delivered}</Text>
                     </View>
                 </View>
@@ -289,7 +293,7 @@ const styles = StyleSheet.create({
     orderDetailsListView: {
         width: Scale(400),
         alignSelf: "center",
-        height: Scale(164),
+        height: Scale(170),
         borderRadius: Scale(8),
         backgroundColor: "#ffff",
         marginTop: Scale(15),
@@ -338,7 +342,6 @@ const styles = StyleSheet.create({
 
     },
     buttonView: {
-        marginTop: 20,
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center"
@@ -349,10 +352,12 @@ const styles = StyleSheet.create({
         height: Scale(36),
         width: Scale(98),
         alignItems: "center",
-        justifyContent: "center"
+        justifyContent: "center",
+        backgroundColor:"transparent"
     },
     delivertTxt: {
-        color: "#2AA952"
+        color: "#2AA952",
+        marginTop:20
     },
     txtInput: {
         borderWidth: 1.5,

@@ -4,6 +4,7 @@ import { backIcon, searchIcon } from '../../assets';
 import Scale from '../../Scale';
 import { orderImg, orderImg1, orderImg2, masterCard } from '../../assets';
 import { useNavigation } from "@react-navigation/native"
+import CustomButton from '../../Components/Button';
 export default function OrderDetails() {
 
 
@@ -180,12 +181,8 @@ const orderInformation = () => {
       <View>
       </View>
       <View style={styles.btnView}>
-        <TouchableOpacity style={styles.reorderBtn}>
-          <Text style={styles.reorderBtnTxt}>Reorder</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.feedbackBtn}>
-          <Text style={styles.feedbackBtnTxt}>Leave feedback</Text>
-        </TouchableOpacity>
+        <CustomButton BtnName="Reorder" btnStyle={styles.reorderBtn} textStyle={styles.reorderBtnTxt}/>
+        <CustomButton BtnName="Leave feedback" btnStyle={styles.feedbackBtn} textStyle={styles.feedbackBtnTxt}/>
       </View>
     </View>
   )
@@ -366,6 +363,7 @@ const styles = StyleSheet.create({
     // borderColor:"#222222",
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor:"transparent"
   },
   feedbackBtn: {
     borderRadius: 24,

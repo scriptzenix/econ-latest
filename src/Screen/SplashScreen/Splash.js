@@ -7,13 +7,13 @@ import { useNavigation } from '@react-navigation/native';
 import Scale from '../../Scale';
 const Splash = () => {
     const navigation = useNavigation();
-//   useEffect(() => {
-//     const timeout = setTimeout(() => {
-//       navigation.navigate("/");
-//     }, 5000);
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      navigation.navigate("Main");
+    }, 5000);
   
-//     return () => clearTimeout(timeout);
-//   }, [navigation]); 
+    return () => clearTimeout(timeout);
+  }, [navigation]); 
 
     return (
       <Swiper autoplay={false} style={styles.wrapper} 
@@ -23,7 +23,7 @@ const Splash = () => {
       >
         <View style={styles.container}>
             <Image source={splashimg} style={styles.image} />
-            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('LandingPage')}>
+            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main')}>
                 <Text style={styles.buttonText}>Continue</Text>
             </TouchableOpacity>
         </View>

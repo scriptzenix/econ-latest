@@ -3,6 +3,7 @@ import { Text, StyleSheet, View, Image, FlatList, TouchableOpacity, ScrollView }
 import { backIcon, searchIcon, clothes, shoes, Neew, Accesories } from '../../assets';
 import Scale from '../../Scale';
 import { useNavigation } from '@react-navigation/native';
+import Header from '../../Components/Header';
 
 const Categories = () => {
     const [activeCategory, setActiveCategory] = useState('women');
@@ -32,17 +33,17 @@ const Categories = () => {
 
     const navigation = useNavigation();
 
-    const renderHeader = () => (
-        <View style={styles.headerView}>
-            <TouchableOpacity onPress={() => {
-                navigation.goBack()
-            }}>
-                <Image source={backIcon} style={styles.backIconImage} />
-            </TouchableOpacity>
-            <Text style={styles.categoriesText}>Categories</Text>
-            <Image source={searchIcon} style={styles.backIconImage} />
-        </View>
-    );
+    // const renderHeader = () => (
+    //     <View style={styles.headerView}>
+    //         <TouchableOpacity onPress={() => {
+    //             navigation.goBack()
+    //         }}>
+    //             <Image source={backIcon} style={styles.backIconImage} />
+    //         </TouchableOpacity>
+    //         <Text style={styles.categoriesText}>Categories</Text>
+    //         <Image source={searchIcon} style={styles.backIconImage} />
+    //     </View>
+    // );
 
     const renderCategories = () => (
         <View>
@@ -111,7 +112,7 @@ const Categories = () => {
 
     return (
         <ScrollView style={styles.mainContainer}>
-            {renderHeader()}
+    <Header leftIcon={backIcon} rightIcon={searchIcon} headerTxt="Categories"/>
             {renderCategories()}
             <FlatList
                 showsVerticalScrollIndicator={false}
