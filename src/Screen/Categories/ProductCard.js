@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, TouchableOpacity, Image, FlatList, ImageBackground, ImageComponent, ScrollView } from 'react-native'
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
-import { shareIcon, backIcon, shortDress, shortDress1, downArrow, bg, heartIcon,forwardImg} from '../../assets'
+import { shareIcon, backIcon, shortDress, shortDress1, downArrow, bg, heartIcon, forwardImg,product1,Tshirt,} from '../../assets'
 import Scale from '../../Scale'
 import Header from '../../Components/Header'
 import { Rating, AirbnbRating } from 'react-native-ratings'
@@ -15,6 +15,7 @@ const ProductCard = () => {
       <Header leftIcon={backIcon} rightIcon={shareIcon} headerTxt="ShortDress" />
       {renderListData()}
       {renderProduuctDetails()}
+      {flatist()}
     </ScrollView>
   )
 }
@@ -76,42 +77,121 @@ const renderProduuctDetails = () => {
           <Text style={styles.brandName}>$19.99</Text>
         </View>
         <Text style={styles.dressName}>Short black dress</Text>
-           
-        <AirbnbRating
-        count={5}
-        defaultRating={3}
-        size={20}
-        reviews={false}
-        ratingContainerStyle={styles.rating}
 
-      />
-        <View style={{width:"100%"}}>
-         <ReadMore
-         numberOfLines={2}
-        
-         onReady={this._handleTextReady}>
-         <Text style={styles.cardText}>
-         <Text style={styles.Description}>Short dress in soft cotton jersey with decorative buttons down the front and a wide, frill-trimmed square neckline with concealed elastication. Elasticated seam under the bust and short puff sleeves with a small frill trim.</Text>
-         </Text>
-       </ReadMore>
-         </View>
+        <AirbnbRating
+          count={5}
+          defaultRating={3}
+          size={20}
+          reviews={false}
+          ratingContainerStyle={styles.rating}
+
+        />
+        <View style={{ width: "100%" }}>
+          <ReadMore
+            numberOfLines={2}
+
+            onReady={this._handleTextReady}>
+            <Text style={styles.cardText}>
+              <Text style={styles.Description}>Short dress in soft cotton jersey with decorative buttons down the front and a wide, frill-trimmed square neckline with concealed elastication. Elasticated seam under the bust and short puff sleeves with a small frill trim.</Text>
+            </Text>
+          </ReadMore>
+        </View>
       </View>
       <View style={styles.btnView}>
-      <CustomButton BtnName="ADD TO CART"/>
-      <View style={styles.blankView}/>
+        <CustomButton BtnName="ADD TO CART" />
+        <View style={styles.blankView} />
       </View>
       <View style={styles.boxView}>
-      <Text style={styles.Txt}>Shipping info</Text>
-      <Image source={forwardImg} style={[styles.Icon,{tintColor:"#000"}]}/>
+        <Text style={styles.Txt}>Shipping info</Text>
+        <Image source={forwardImg} style={
+
+          styles.forwardIcon
+        } />
       </View>
-      <View style={styles.boxView}>
-      <Text style={styles.Txt}>Support</Text>
-      <Image source={forwardImg} style={[styles.Icon,{tintColor:"#000"}]}/>
+      <View style={styles.boxView1}>
+        <Text style={styles.Txt}>Support</Text>
+        <Image source={forwardImg} style={styles.forwardIcon
+        } />
       </View>
     </View>
   )
 }
 
+const renderItem = ({ item }) => (
+  <TouchableOpacity style={styles.cardContainer}>
+      <ImageBackground source={item.image} style={styles.cardImg} >
+          <View style={styles.newTxtView}>
+              <Text style={styles.newTxt}>{item.new}</Text>
+          </View>
+      </ImageBackground>
+      <View>
+          <Rating
+              type='custom'
+              ratingCount={5}
+              imageSize={20}
+              onFinishRating={this.ratingCompleted}
+              defaultRating={0}
+              onStartRating={0}
+              style={styles.rating}/>
+      </View>
+      <Text style={styles.derssName}>{item.derssName}</Text>
+      <Text style={styles.derssSubName}>{item.derssSubName}</Text>
+      <View style={styles.priceView}>
+          <Text style={styles.price}>{item.price}</Text>
+          <Text style={styles.disPrice}>{item.DiscountPrice}</Text>
+      </View>
+  </TouchableOpacity>
+
+);
+const flatist = () => {
+  const data = [
+      {
+          id: '1',
+          image: product1,
+          derssName: "Dorothy Perkins",
+          derssSubName: "Evening Dress",
+          price: "15$",
+          DiscountPrice: "12$",
+          new: "NEW"
+      },
+      {
+          id: '2',
+          image: Tshirt,
+          derssName: "Dorothy Perkins",
+          derssSubName: "Evening Dress",
+          price: "15$",
+          DiscountPrice: "12$",
+          new: "NEW"
+      },
+      {
+          id: '3',
+          image: product1,
+          derssName: "Dorothy Perkins",
+          derssSubName: "Evening Dress",
+          price: "15$",
+          DiscountPrice: "12$",
+          new: "NEW"
+      },
+      {
+          id: '4',
+          image: Tshirt,
+          derssName: "Dorothy Perkins",
+          derssSubName: "Evening Dress",
+          price: "15$",
+          DiscountPrice: "12$",
+          new: "NEW"
+      },
+
+  ];
+  return (
+      <FlatList showsHorizontalScrollIndicator={false}
+          horizontal={true}
+          data={data}
+          renderItem={renderItem}
+          keyExtractor={item => item.id}
+      />
+  );
+}
 
 export default ProductCard
 
@@ -173,7 +253,8 @@ const styles = StyleSheet.create({
   ContainerView: {
     flexDirection: "row",
     justifyContent: "space-around",
-    marginTop: Scale(20)
+    marginTop: Scale(20),
+    
   },
   bgIcon: {
     height: Scale(49),
@@ -184,8 +265,8 @@ const styles = StyleSheet.create({
     height: Scale(35),
     width: Scale(35),
     resizeMode: "contain",
-    alignSelf:"center",
-    marginTop:4
+    alignSelf: "center",
+    marginTop: 4
   },
   nameView: {
     flexDirection: "row",
@@ -199,9 +280,9 @@ const styles = StyleSheet.create({
   },
   rating: {
     height: 30,
-    alignSelf:"flex-start",
-    marginTop:-5,
-  marginVertical:15
+    alignSelf: "flex-start",
+    marginTop: -5,
+    marginVertical: 15
 
   },
   dressName: {
@@ -209,45 +290,64 @@ const styles = StyleSheet.create({
     fontSize: Scale(15),
     color: "#9B9B9B"
   },
-  Description:{
-fontFamily: "Metropolis",
-fontSize: 18,
-lineHeight: 21,
-letterSpacing: -0.15000000596046448,
-color:"#222222",
+  Description: {
+    fontFamily: "Metropolis",
+    fontSize: 18,
+    lineHeight: 21,
+    letterSpacing: -0.15000000596046448,
+    color: "#222222",
   },
-  btnView:{
-    height:"25%",
-    marginVertical:10,
+  btnView: {
+    height: "25%",
+    marginVertical: 10,
     backgroundColor: '#ffff',
     elevation: 5,
-    alignItems:"center",
+    alignItems: "center",
     shadowColor: "#000",
     shadowOpacity: 0.8,
     shadowOffset: {
-      height:1,
+      height: 1,
       width: 1
     }
   },
-  blankView:{
-    height:Scale(5),
-    width:Scale(134),
-    backgroundColor:"#000000",
-    marginVertical:20,
-    borderRadius:8
+  blankView: {
+    height: Scale(5),
+    width: Scale(134),
+    backgroundColor: "#000000",
+    marginVertical: 20,
+    borderRadius: 8
   },
-  boxView:{
-height:Scale(80),
-flexDirection:"row",
-justifyContent:"space-between",
-backgroundColor:"#ffff",
-alignItems:"center",
-},
-Txt:{
-fontFamily: "Metropolis",
-fontSize: 18,
-lineheight: 16,
-color:"#222222"
-}
-  
+  boxView: {
+    height: Scale(60),
+    flexDirection: "row",
+    justifyContent: "space-between",
+    backgroundColor: "#ffff",
+    alignItems: "center",
+    borderTopWidth: 0.5,
+    borderColor: "#9B9B9B",
+  },
+  boxView1:{
+    eight: Scale(60),
+    flexDirection: "row",
+    justifyContent: "space-between",
+    backgroundColor: "#ffff",
+    alignItems: "center",
+    borderTopWidth: 0.5,
+    borderColor: "#9B9B9B",
+    borderBottomWidth:0.5,
+    
+  },
+  Txt: {
+    fontFamily: "Metropolis",
+    fontSize: 18,
+    lineheight: 16,
+    color: "#222222",
+    marginLeft:10
+  },
+  forwardIcon: {
+    height: Scale(16),
+    width: Scale(16),
+    marginRight:10
+  }
+
 })
