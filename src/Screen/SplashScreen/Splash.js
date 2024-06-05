@@ -1,19 +1,22 @@
 import React,{useEffect} from 'react';
-import { View, StyleSheet, TouchableOpacity, Text, Image } from 'react-native';
-import { splashimg,splashimg1,splashimg2} from '../../assets';
+import { View, StyleSheet, TouchableOpacity, Text, Image, ImageBackground } from 'react-native';
+import { splashimg,splashImg1,splashimg2} from '../../assets';
 import Swiper from 'react-native-swiper'
-
-const Splash = ({ navigation }) => {
+import CustomButton from '../../Components/Button';
+import { useNavigation } from '@react-navigation/native';
+import Scale from '../../Scale';
+const Splash = () => {
+    const navigation = useNavigation();
   useEffect(() => {
     const timeout = setTimeout(() => {
       navigation.navigate("Main");
-    }, 3000);
+    }, 5000);
   
     return () => clearTimeout(timeout);
   }, [navigation]); 
 
     return (
-      <Swiper autoplay={true} style={styles.wrapper} 
+      <Swiper autoplay={false} style={styles.wrapper} 
         activeDotColor='#fff' horizontal={true}
         dotStyle={{ height: 7, }}
         activeDotStyle={{ width: 18, borderRadius: 3.5 }}
@@ -25,17 +28,20 @@ const Splash = ({ navigation }) => {
             </TouchableOpacity>
         </View>
         <View style={styles.container}>
-        <Image source={splashimg1} style={styles.image} />
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main')}>
-            <Text style={styles.buttonText}>Continue</Text>
-        </TouchableOpacity>
+        <ImageBackground source={splashImg1} style={styles.image1}>
+       <CustomButton
+        BtnName="Sign-up"
+         handlePress={() => navigation.navigate('SignUp')}
+
+         />
+       <CustomButton 
+       BtnName="Login" 
+       handlePress={() => navigation.navigate('Login')}
+       btnStyle={styles.loginBtn}
+       textStyle={styles.loginBtnTxt}/>
+
+        </ImageBackground>
     </View>
-    <View style={styles.container}>
-    <Image source={splashimg2} style={styles.image} />
-    <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Main')}>
-        <Text style={styles.buttonText}>Continue</Text>
-    </TouchableOpacity>
-</View>
         </Swiper>
     );
 }
@@ -52,6 +58,13 @@ const styles = StyleSheet.create({
         height: 200,
         marginBottom: 20,
     },
+    image1:{
+height:"100%",
+width:"100%",
+resizeMode:"contain",
+justifyContent:"center",
+alignItems:"center"
+    },
     button: {
         backgroundColor: "white",
         paddingVertical: 10,
@@ -63,6 +76,12 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         color: "black",
     },
+    loginBtn:{
+        borderColor:"#fff",
+        borderWidth:1,
+        backgroundColor:"transparent"
+    },
+
 });
 
 export default Splash;

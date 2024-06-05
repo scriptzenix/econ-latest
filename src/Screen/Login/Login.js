@@ -3,6 +3,8 @@ import React, { useState } from 'react'
 import { backIcon, rightIcon, forwardIcon, google, facebook } from "../../assets"
 import Scale from '../../Scale'
 import { useNavigation } from '@react-navigation/native'
+import CustomButton from '../../Components/Button'
+import axios from 'axios';
 export default function Login() {
   const navigation = useNavigation();
   const [email, setEmail] = useState('');
@@ -35,17 +37,57 @@ export default function Login() {
 
     return isValid;
   };
-  const loginHandler = () => {
+  // const loginHandler = async () => {
+  //   if (validateInputs()) {
+  //     try {
+  //       const response = await axios.post(
+  //         'https://ecommerce-application-wsic.onrender.com/users/login',
+  //         { email, password },
+  //         {
+  //           headers: {
+  //             'Content-Type': 'application/json',
+  //           }
+  //         }
+  //       );
+  //       console.log('Login up successful:', response.data);
+  //       navigation.navigate("LandingPage");
+  //       // navigation.navigate('/sign')
+
+
+  //     } catch (error) {
+  //       console.error('Error login up:', error);
+  //     }
+  //   }
+  // };
+
+  const loginHandler = async () => {
     if (validateInputs()) {
-      navigation.navigate('/sign')
+      try {
+        console.log('Sending login request to server...');
+        const response = await axios.post(
+          'https://ecommerce-application-wsic.onrender.com/users/login',
+          { email, password },
+          {
+            headers: {
+              'Content-Type': 'application/json',
+            }
+          }
+        );
+        const {Token} = response.data;
+        localStorage.setItem('Token',Token);
+        console.log('Login successful:', response.data);
+        navigation.navigate("LandingPage");
+      } catch (error) {
+        console.error('Error logging in:', error);
+      }
     }
   };
   return (
     <View style={styles.mainContainer}>
-      <TouchableOpacity 
-      onPress={() => {
-        navigation.goBack();
-      }}
+      <TouchableOpacity
+        onPress={() => {
+          navigation.goBack();
+        }}
       >
         <Image source={backIcon} style={styles.Icon} />
       </TouchableOpacity>
@@ -87,21 +129,22 @@ export default function Login() {
           <Image source={forwardIcon} style={styles.forwardIcon} />
         </TouchableOpacity>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.btnView} onPress={loginHandler}>
-        <Text style={styles.btnTxt}>LOGIN</Text>
-      </TouchableOpacity>
+      <CustomButton BtnName={"LOGIN"}
+        handlePress={loginHandler}
+      />
+
       <View style={styles.bottomTxt}>
-      <View style={styles.socialacView}>
-        <Text style={styles.socialacTxt}>Or login with social account</Text>
-      </View>
-      <View style={styles.bottombtnView}>
-        <TouchableOpacity>
-          <Image source={google} style={styles.Btn} />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Image source={facebook} style={styles.Btn} />
-        </TouchableOpacity>
-      </View>
+        <View style={styles.socialacView}>
+          <Text style={styles.socialacTxt}>Or login with social account</Text>
+        </View>
+        <View style={styles.bottombtnView}>
+          <TouchableOpacity>
+            <Image source={google} style={styles.Btn} />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Image source={facebook} style={styles.Btn} />
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   )
@@ -119,7 +162,7 @@ const styles = StyleSheet.create({
   },
   headingTxt: {
     fontSize: Scale(34),
-    fontFamily:"Metropolis",
+    fontFamily: "Metropolis",
     fontWeight: "700",
     color: "#000",
     marginTop: Scale(20)
@@ -164,28 +207,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     marginTop: Scale(5)
   },
-  btnTxt: {
-    color: "#FFFFFF",
-    textAlign: "center",
-    justifyContent: "center",
-    fontSize: Scale(15),
-    fontFamily:"Metropolis",
-  },
-  btnView: {
-    backgroundColor: "#DB3022",
-    borderRadius: Scale(25),
-    width: Scale(400),
-    height: Scale(48),
-    alignItems: "center",
-    justifyContent: "center",
-    // marginHorizontal: Scale(20),
-    marginTop: Scale(30)
-  },
   socialacTxt: {
     color: "#222222",
     fontFamily: "Metropolis",
-fontSize: 20,
-lineHeight: 20,
+    fontSize: 20,
+    lineHeight: 20,
   },
   socialacView: {
     alignItems: "center",
@@ -196,7 +222,7 @@ lineHeight: 20,
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    marginTop:Scale(10)
+    marginTop: Scale(10)
   },
   Btn: {
     width: Scale(120),
@@ -208,7 +234,7 @@ lineHeight: 20,
     marginHorizontal: Scale(5),
     fontSize: Scale(16),
     marginTop: Scale(2),
-    fontFamily:"Metropolis",
+    fontFamily: "Metropolis",
   },
   placeholder: {
     position: 'absolute',
@@ -216,7 +242,7 @@ lineHeight: 20,
     left: Scale(12),
     zIndex: -1,
     fontSize: Scale(16),
-    fontFamily:"Metropolis",
+    fontFamily: "Metropolis",
   },
   placeholderShifted: {
     top: Scale(2),
@@ -232,9 +258,9 @@ lineHeight: 20,
     color: "red",
     marginHorizontal: Scale(5)
   },
-  bottomTxt:{
-    flex:0.9,
-   justifyContent:"flex-end",
-   alignItems:"center",
+  bottomTxt: {
+    flex: 0.9,
+    justifyContent: "flex-end",
+    alignItems: "center",
   }
 })

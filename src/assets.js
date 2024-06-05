@@ -15,11 +15,35 @@ export const shop = require("./Assets/shop.png");
 export const bag = require("./Assets/bag.png");
 export const profile = require("./Assets/profile.png");
 export const splashimg = require("./Assets/e_commerce.png");
-export const splashimg1 = require("./Assets/shop_e.png");
+// export const splashimg1 = require("./Assets/shop_e.png");
 export const splashimg2 = require("./Assets/globalshop.png");
 export const searchIcon = require("./Assets/search.png");
 export const Myprofile = require("./Assets/Myprofile.png");
 export const forwardImg = require("./Assets/forward.png");
+export const orderImg = require("./Assets/product3.png");
+export const orderImg1 = require("./Assets/product4.png");
+export const orderImg2 = require("./Assets/product2.png");
+export const masterCard = require("./Assets/mastercard.png");
+export const clothes = require("./Assets/clothes.png");
+export const shoes = require("./Assets/shoes.png");
+export const Neew = require("./Assets/Neew.png");
+export const Accesories = require("./Assets/Accesories.png");
+export const filterIcon = require("./Assets/filter.png");
+export const priceFiter = require("./Assets/priceFilter.png");
+export const sideBarIcon = require("./Assets/sideBar.png");
+export const heartIcon = require("./Assets/heartIcon.png");
+export const Shape = require("./Assets/Shape.png");
+export const bg = require("./Assets/bg.png");
+export const splashImg1 = require("./Assets/splashImg1.png");
+export const shareIcon = require("./Assets/shareIcon.png");
+export const shortDress = require("./Assets/shortDress.png");
+export const shortDress1 = require("./Assets/shortDress1.png");
+export const downArrow = require("./Assets/downArrow.png");
+
+
+
+
+
 
 
 

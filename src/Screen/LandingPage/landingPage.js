@@ -3,6 +3,7 @@ import React from 'react'
 import { Fashionimg, image, product, Tshirt, product1 } from '../../assets';
 import Scale from '../../Scale';
 import { Rating } from 'react-native-ratings';
+import CustomButton from '../../Components/Button';
 export default function LandingPage() {
 
     return (
@@ -10,9 +11,12 @@ export default function LandingPage() {
         <ScrollView style={styles.container}>
             <ImageBackground source={image} resizeMode="cover" style={styles.bgimage}>
                 <Image source={Fashionimg} resizeMode='contain' style={styles.fImg} />
-                <TouchableOpacity style={styles.checkBtn}>
-                    <Text style={styles.checkBtnTxt}>Check</Text>
-                </TouchableOpacity>
+               <CustomButton 
+               BtnName='check' 
+               btnStyle={styles.checkBtn}
+
+               />
+               
             </ImageBackground>
             <View style={styles.middleContainer}>
                 <Text style={styles.txtNew}>New</Text>
@@ -42,8 +46,7 @@ const renderItem = ({ item }) => (
                 onFinishRating={this.ratingCompleted}
                 defaultRating={0}
                 onStartRating={0}
-                style={styles.rating}
-            />
+                style={styles.rating}/>
         </View>
         <Text style={styles.derssName}>{item.derssName}</Text>
         <Text style={styles.derssSubName}>{item.derssSubName}</Text>
@@ -57,7 +60,7 @@ const renderItem = ({ item }) => (
 const flatist = () => {
     const data = [
         {
-            id: '1', // Unique identifier for each item
+            id: '1',
             image: product1,
             derssName: "Dorothy Perkins",
             derssSubName: "Evening Dress",
@@ -66,7 +69,7 @@ const flatist = () => {
             new: "NEW"
         },
         {
-            id: '2', // Unique identifier for each item
+            id: '2',
             image: Tshirt,
             derssName: "Dorothy Perkins",
             derssSubName: "Evening Dress",
@@ -75,7 +78,7 @@ const flatist = () => {
             new: "NEW"
         },
         {
-            id: '3', // Unique identifier for each item
+            id: '3',
             image: product1,
             derssName: "Dorothy Perkins",
             derssSubName: "Evening Dress",
@@ -84,7 +87,7 @@ const flatist = () => {
             new: "NEW"
         },
         {
-            id: '4', // Unique identifier for each item
+            id: '4',
             image: Tshirt,
             derssName: "Dorothy Perkins",
             derssSubName: "Evening Dress",
@@ -92,7 +95,7 @@ const flatist = () => {
             DiscountPrice: "12$",
             new: "NEW"
         },
-        // Add id for other items
+
     ];
     return (
         <FlatList showsHorizontalScrollIndicator={false}
@@ -123,13 +126,8 @@ const styles = StyleSheet.create({
         fontFamily: "Metropolis",
     },
     checkBtn: {
-        backgroundColor: "red",
         height: Scale(38),
         width: Scale(160),
-        borderRadius: Scale(25),
-        justifyContent: "center",
-        alignItems: "center",
-        marginHorizontal: Scale(10),
         marginBottom: Scale(20)
     },
     middleContainer: {
@@ -189,6 +187,8 @@ const styles = StyleSheet.create({
     rating: {
         alignSelf: "flex-start",
         marginTop: Scale(10),
+        // backgroundColor:"transparent"
+        
     },
     priceView: {
         flexDirection: "row",
@@ -221,3 +221,4 @@ const styles = StyleSheet.create({
 
     }
 });
+

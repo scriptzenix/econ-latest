@@ -2,14 +2,14 @@ import { Text, View, StyleSheet, TouchableOpacity, Image, TextInput } from 'reac
 import React, { useState } from 'react'
 import Scale from '../../Scale'
 import { backIcon, rightIcon, closeIcon } from '../../assets'
-import { useNavigation } from '@react-navigation/native'
+import CustomButton from '../../Components/Button'
+import { useNavigation } from '@react-navigation/native';
 export default function ForgotPassword() {
   const [email, setEmail] = useState('');
   const [emailError, setemailError] = useState('');
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const validateEmail = () => {
     let isValid = true;
-
     if (!email.trim()) {
       setemailError('Email is required');
       isValid = false;
@@ -19,22 +19,39 @@ export default function ForgotPassword() {
     } else {
       setemailError('');
     }
-
     return isValid;
   };
 
-  const handleSendPress = () => {
+  const handleSendPress = async() => {
+    const token = localStorage.getItem("token");
     if (validateEmail()) {
-      // Proceed with sending email logic
+      try {
+        const response = await axios.post(
+            'https://ecommerce-application-wsic.onrender.com/users/forgot_password', 
+            {email},
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`,
+                }
+            }
+        );
+        console.log("token is", token);
+        console.log('ForgotPassword  successful:', response.data);
+    navigation.navigate("Login");
+
+    } catch (error) {
+        console.error('Error ForgotPassword:', error);
+    }
     }
   };
   const navigation = useNavigation();
   return (
     <View style={styles.mainContainer}>
-      <TouchableOpacity 
-      onPress={() => {
-        navigation.goBack();
-      }}>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.goBack();
+        }}>
         <Image source={backIcon} style={styles.Icon} />
       </TouchableOpacity>
       <Text style={styles.headingTxt}>Forgot password</Text>
@@ -56,10 +73,9 @@ export default function ForgotPassword() {
         {emailError ? <Text style={styles.errorText}>{emailError}</Text> : null}
 
       </View>
-
-      <TouchableOpacity style={styles.btnView} onPress={handleSendPress}>
-        <Text style={styles.btnTxt}>SEND</Text>
-      </TouchableOpacity>
+      <CustomButton BtnName={"SEND"}
+      handlePress={handleSendPress}
+      />
     </View>
   )
 }
@@ -78,7 +94,7 @@ const styles = StyleSheet.create({
     fontWeight: "700",
     color: "#000",
     marginTop: Scale(20),
-    fontFamily:"Metropolis",
+    fontFamily: "Metropolis",
 
   },
   textInputView: {
@@ -110,7 +126,7 @@ const styles = StyleSheet.create({
   acTxt: {
     fontSize: Scale(18),
     color: "#222222",
-    fontFamily:"Metropolis",
+    fontFamily: "Metropolis",
 
   },
   forwardIcon: {
@@ -121,27 +137,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     marginTop: Scale(8)
   },
-  btnTxt: {
-    color: "#FFFFFF",
-    textAlign: "center",
-    justifyContent: "center",
-    fontSize: Scale(15),
-    fontFamily:"Metropolis",
-  },
-  btnView: {
-    backgroundColor: "#DB3022",
-    borderRadius: Scale(25),
-    width: Scale(400),
-    height: Scale(48),
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: Scale(30)
-  },
   socialacTxt: {
     color: "#222222",
     fontFamily: "Metropolis",
-fontSize: 20,
-lineHeight: 20,
+    fontSize: 20,
+    lineHeight: 20,
   },
   socialacView: {
     alignItems: "center",
@@ -167,7 +167,7 @@ lineHeight: 20,
     fontSize: 19,
     color: "#222222",
     lineHeight: 24,
-    fontFamily:"Metropolis",
+    fontFamily: "Metropolis",
   },
   placeholder: {
     position: 'absolute',
@@ -175,13 +175,13 @@ lineHeight: 20,
     left: Scale(12),
     zIndex: -1,
     fontSize: Scale(16),
-    fontFamily:"Metropolis",
+    fontFamily: "Metropolis",
   },
   placeholderShifted: {
     top: Scale(-1),
     fontSize: Scale(16),
     justifyContent: "center",
-    fontFamily:"Metropolis",
+    fontFamily: "Metropolis",
 
   },
   textInputError: {
