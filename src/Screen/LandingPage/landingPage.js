@@ -39,14 +39,14 @@ const renderItem = ({ item }) => (
             </View>
         </ImageBackground>
         <View>
-            <Rating
-                type='custom'
-                ratingCount={5}
-                imageSize={20}
-                onFinishRating={this.ratingCompleted}
-                defaultRating={0}
-                onStartRating={0}
-                style={styles.rating}/>
+        <AirbnbRating
+        count={5}
+        defaultRating={3}
+        size={20}
+        reviews={false}
+        ratingContainerStyle={styles.rating}
+
+      />
         </View>
         <Text style={styles.derssName}>{item.derssName}</Text>
         <Text style={styles.derssSubName}>{item.derssSubName}</Text>

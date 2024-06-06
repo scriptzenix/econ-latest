@@ -39,6 +39,13 @@ export const shareIcon = require("./Assets/shareIcon.png");
 export const shortDress = require("./Assets/shortDress.png");
 export const shortDress1 = require("./Assets/shortDress1.png");
 export const downArrow = require("./Assets/downArrow.png");
+export const dotIcon = require("./Assets/dotIcon.png");
+export const minusIcon = require("./Assets/minus.png");
+export const plusIcon = require("./Assets/plus.png");
+export const inactiveIcon = require("./Assets/inactive.png");
+
+
+
 
 
 

@@ -4,12 +4,13 @@ import Scale from '../Scale';
 import { useNavigation } from '@react-navigation/native';
 const Header = (props) => {
 const navigation = useNavigation();
-    const {leftIcon,rightIcon,headerTxt} = props;
+    const {leftIcon,rightIcon,headerTxt,handlePress} = props;
   return (
     <View>
     <View style={styles.Container}>
     <TouchableOpacity 
-       onPress={() => navigation.goBack()} 
+    //    onPress={() => navigation.goBack()} 
+    onPress={handlePress}
     >
       <Image source={leftIcon} style={styles.Icon} />
       </TouchableOpacity>
