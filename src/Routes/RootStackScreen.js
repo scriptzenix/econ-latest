@@ -5,7 +5,7 @@ import Login from '../Screen/Login/Login';
 import SignUp from '../Screen/SignUp/signUp';
 import ForgotPassword from '../Screen/Login/ForgotPassword';
 import LandingPage from '../Screen/LandingPage/landingPage';
-import { BottomTabBar, BottomTabView, createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Image, StyleSheet } from 'react-native';
 import { Home, shop, bag, profile } from '../assets';
 import Splash from '../Screen/SplashScreen/Splash';
@@ -17,6 +17,8 @@ import Categories from '../Screen/Categories/Categories';
 import Catalog from '../Screen/Categories/Catalog';
 import ProductCard from '../Screen/Categories/ProductCard';
 import MyBag from '../Screen/AddCard/MyBag';
+import Favorites from '../Screen/Favorites/Favorites';
+import RatingsandReview from '../Screen/Ratings/RatingsandReview';
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 const ProfileStack = createStackNavigator();
@@ -24,7 +26,7 @@ const ProfileStack = createStackNavigator();
 function App() {
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName="MyBag" screenOptions={{ headerShown: false }}>
+            <Stack.Navigator initialRouteName="RatingsandReview" screenOptions={{ headerShown: false }}>
                 <Stack.Screen name="Splash" component={Splash} />
                 <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
                 <Stack.Screen name="Main" component={MainTabScreen} />
@@ -34,8 +36,8 @@ function App() {
                 <Stack.Screen name="SignUp" component={SignUp} />
                 <Stack.Screen name="ProductCard" component={ProductCard} />
                 <Stack.Screen name="MyBag" component={MyBag} />
-
-
+                <Stack.Screen name="Favorites" component={Favorites} />
+                <Stack.Screen name="RatingsandReview" component={RatingsandReview} />
             </Stack.Navigator>
         </NavigationContainer> 
     );

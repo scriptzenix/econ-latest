@@ -3,6 +3,7 @@ import { View, StyleSheet, TextInput, TouchableOpacity, Image, Text } from 'reac
 import BagCart from "../../Components/BagCart";
 import Scale from '../../Scale';
 import { searchIcon, inactiveIcon } from '../../assets';
+import CustomButton from '../../Components/Button';
 export default function MyBag() {
     return (
         <View style={styles.mainConatiner}>
@@ -45,9 +46,16 @@ renderHeader = () => {
 }
 const renderCode = () => {
     return (
-        <View style={styles.inputTxt}>
-            <TextInput placeholder='Enter your promo code' />
-            <Image source={inactiveIcon} style={styles.searchIcon} />
+        <View>
+            <View style={styles.inputTxtView}>
+                <TextInput placeholder='Enter your promo code' style={styles.inputTxt} />
+                <Image source={inactiveIcon} style={styles.inactiveIcon} />
+            </View>
+            <View style={styles.amountTxtView}>
+                <Text style={styles.totalamountTxt}>Total amount:</Text>
+                <Text style={styles.amountTxt}>124$</Text>
+            </View>
+            <CustomButton BtnName="CHECK OUT" btnStyle={styles.checkBtn}/>
         </View>
     )
 }
@@ -55,7 +63,6 @@ const renderCode = () => {
 const styles = StyleSheet.create({
     mainConatiner: {
         flex: 1,
-        backgroundColor: "#ffff"
     },
     container: {
         flex: 1,
@@ -101,13 +108,46 @@ const styles = StyleSheet.create({
         fontFamily: "Metropolis"
 
     },
-    inputTxt:{
-        flexDirection:"row",
-        justifyContent:"space-between",
-        marginHorizontal:20,
-        backgroundColor:"white",
-        width:Scale(350),
-
+    inputTxtView: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        marginHorizontal: 10,
+        backgroundColor: "#ffff",
+        width: "95%",
+        height: Scale(45),
+        gap: 5,
+        alignItems: "center",
+        borderRadius: 10
+    },
+    inactiveIcon: {
+        height: Scale(45),
+        width: Scale(45)
+    },
+    inputTxt: {
+        fontSize: 14,
+        color: "#222222",
+        fontFamily: "Metropolis",
+        marginLeft: 10
+    },
+    amountTxtView: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        marginHorizontal: 20,
+        marginVertical: 20
+    },
+    totalamountTxt: {
+        fontFamily: "Metropolis",
+        fontSize: 16,
+        color: "9B9B9B"
+    },
+    amountTxt: {
+        fontFamily: "Metropolis",
+        fontSize: 18,
+        color: "#222222",
+        fontWeight: "bold"
+    },
+    checkBtn:{
+       marginHorizontal:15
     }
 
 });

@@ -43,6 +43,16 @@ export const dotIcon = require("./Assets/dotIcon.png");
 export const minusIcon = require("./Assets/minus.png");
 export const plusIcon = require("./Assets/plus.png");
 export const inactiveIcon = require("./Assets/inactive.png");
+export const vectorImage = require("./Assets/Vector.png");
+export const crossButton = require("./Assets/CrossButton.png");
+export const leftArrowImage = require("./Assets/LeftArrow.png");
+export const filter = require("./Assets/filter.png")
+export const grid = require("./Assets/columnGrid.png");
+export const swap = require("./Assets/Swap.png");
+export const rightArrowImage = require("./Assets/rightArrow.png");
+export const inActiveCheckBox = require("./Assets/inActiveCheckBox.png");
+export const ActiveCheckBox = require("./Assets/activeCheckBox.png");
+
 
 
 
