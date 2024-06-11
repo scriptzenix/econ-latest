@@ -234,7 +234,6 @@ const MyOrder = () => {
                         handlePress={() => navigation.navigate('OrderDetails')} 
                         btnStyle={styles.detailBtn}
                         textStyle={styles.details}
-
                         />
                         <Text style={styles.delivertTxt}>{item.delivered}</Text>
                     </View>

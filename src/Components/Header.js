@@ -9,8 +9,8 @@ const navigation = useNavigation();
     <View>
     <View style={styles.Container}>
     <TouchableOpacity 
-    //    onPress={() => navigation.goBack()} 
-    onPress={handlePress}
+       onPress={() => navigation.goBack()} 
+    // onPress={handlePress}
     >
       <Image source={leftIcon} style={styles.Icon} />
       </TouchableOpacity>

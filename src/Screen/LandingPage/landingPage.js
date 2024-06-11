@@ -2,7 +2,7 @@ import { Image, ImageBackground, Text, View, StyleSheet, TouchableOpacity, FlatL
 import React from 'react'
 import { Fashionimg, image, product, Tshirt, product1 } from '../../assets';
 import Scale from '../../Scale';
-import { Rating } from 'react-native-ratings';
+import { AirbnbRating } from 'react-native-ratings';
 import CustomButton from '../../Components/Button';
 export default function LandingPage() {
 
@@ -14,9 +14,7 @@ export default function LandingPage() {
                <CustomButton 
                BtnName='check' 
                btnStyle={styles.checkBtn}
-
-               />
-               
+               /> 
             </ImageBackground>
             <View style={styles.middleContainer}>
                 <Text style={styles.txtNew}>New</Text>

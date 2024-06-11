@@ -6,12 +6,12 @@ import { useNavigation } from '@react-navigation/native'
 const MyProfile = () => {
     return (
         <ScrollView style={styles.mainConatiner}>
-            {renderHeader()}
+             {renderProfileHeader()}
             {rederDetail()}
         </ScrollView>
     )
 }
-renderHeader = () => {
+renderProfileHeader = () => {
     const [Input, setInput] = useState(false);
     const [search, setSearch] = useState("");
     return (
@@ -47,10 +47,9 @@ renderHeader = () => {
 }
 rederDetail = () => {
     const navigation = useNavigation();
-
     return (
         <View style={styles.mainView}>
-            <TouchableOpacity style={styles.container} onPress={() => navigation.navigate('MyOrders')}>
+            <TouchableOpacity style={styles.container} onPress={() => navigation.navigate('MyOrder')}>
                 <View>
                     <Text style={styles.myorderTxt}>My Orders</Text>
                     <Text style={styles.subTxt}>Already have 12 orders</Text>
@@ -59,7 +58,7 @@ rederDetail = () => {
                     <Image source={forwardImg} style={styles.forwardImg} /></TouchableOpacity>
             </TouchableOpacity>
             <View style={styles.dividerView} />
-            <TouchableOpacity style={styles.container} onPress={() => navigation.navigate('MyOrders')}>
+            <TouchableOpacity style={styles.container} onPress={() => navigation.navigate('MyOrder')}>
                 <View>
                     <Text style={styles.myorderTxt}>Shipping addresses</Text>
                     <Text style={styles.subTxt}>3 ddresses</Text>
@@ -69,7 +68,7 @@ rederDetail = () => {
             </TouchableOpacity>
             <View style={styles.dividerView} />
 
-            <TouchableOpacity style={styles.container} onPress={() => navigation.navigate('MyOrders')}>
+            <TouchableOpacity style={styles.container} onPress={() => navigation.navigate('MyOrder')}>
                 <View>
                     <Text style={styles.myorderTxt}>Payment methods</Text>
                     <Text style={styles.subTxt}>Visa  **34</Text>
@@ -79,7 +78,7 @@ rederDetail = () => {
             </TouchableOpacity>
             <View style={styles.dividerView} />
 
-            <TouchableOpacity style={styles.container} onPress={() => navigation.navigate('MyOrders')}>
+            <TouchableOpacity style={styles.container} onPress={() => navigation.navigate('MyOrder')}>
                 <View>
                     <Text style={styles.myorderTxt}>Promocodes</Text>
                     <Text style={styles.subTxt}>You have special promocodes</Text>
@@ -89,7 +88,7 @@ rederDetail = () => {
             </TouchableOpacity>
             <View style={styles.dividerView} />
 
-            <TouchableOpacity style={styles.container} onPress={() => navigation.navigate('MyOrders')}>
+            <TouchableOpacity style={styles.container} onPress={() => navigation.navigate('RatingsandReview')}>
                 <View>
                     <Text style={styles.myorderTxt}>My reviews</Text>
                     <Text style={styles.subTxt}>Reviews for 4 items</Text>

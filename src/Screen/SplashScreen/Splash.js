@@ -7,13 +7,13 @@ import { useNavigation } from '@react-navigation/native';
 import Scale from '../../Scale';
 const Splash = () => {
     const navigation = useNavigation();
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      navigation.navigate("Main");
-    }, 5000);
+//   useEffect(() => {
+//     const timeout = setTimeout(() => {
+//       navigation.navigate("Main");
+//     }, 5000);
   
-    return () => clearTimeout(timeout);
-  }, [navigation]); 
+//     return () => clearTimeout(timeout);
+//   }, [navigation]); 
 
     return (
       <Swiper autoplay={false} style={styles.wrapper} 

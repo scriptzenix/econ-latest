@@ -52,6 +52,8 @@ export const swap = require("./Assets/Swap.png");
 export const rightArrowImage = require("./Assets/rightArrow.png");
 export const inActiveCheckBox = require("./Assets/inActiveCheckBox.png");
 export const ActiveCheckBox = require("./Assets/activeCheckBox.png");
+export const Favorite = require("./Assets/Favorite1.png");
+
 
 
 

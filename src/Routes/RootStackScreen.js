@@ -7,10 +7,10 @@ import ForgotPassword from '../Screen/Login/ForgotPassword';
 import LandingPage from '../Screen/LandingPage/landingPage';
 import {createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Image, StyleSheet } from 'react-native';
-import { Home, shop, bag, profile } from '../assets';
+import { Home, shop, bag, profile,Favorite } from '../assets';
 import Splash from '../Screen/SplashScreen/Splash';
 import MyProfile from '../Screen/MyProfile/MyProfile';
-import MyOrders from '../Screen/MyProfile/MyOrders';
+import MyOrder from '../Screen/MyProfile/MyOrder';
 import OrderDetails from '../Screen/MyProfile/OrderDetails';
 import Setting from '../Screen/Settings/Settings';
 import Categories from '../Screen/Categories/Categories';
@@ -26,7 +26,7 @@ const ProfileStack = createStackNavigator();
 function App() {
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName="RatingsandReview" screenOptions={{ headerShown: false }}>
+            <Stack.Navigator initialRouteName="Setting" screenOptions={{ headerShown: false }}>
                 <Stack.Screen name="Splash" component={Splash} />
                 <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
                 <Stack.Screen name="Main" component={MainTabScreen} />
@@ -38,11 +38,12 @@ function App() {
                 <Stack.Screen name="MyBag" component={MyBag} />
                 <Stack.Screen name="Favorites" component={Favorites} />
                 <Stack.Screen name="RatingsandReview" component={RatingsandReview} />
+                <Stack.Screen name="MyOrder" component={MyOrder} />
+
             </Stack.Navigator>
         </NavigationContainer> 
     );
 }
-
 function MainTabScreen() {
     return (
         <Tab.Navigator 
@@ -81,8 +82,8 @@ function MainTabScreen() {
                 }}
             />
             <Tab.Screen
-                name="SignUp"
-                component={SignUp}
+                name="MyBag"
+                component={MyBag}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Image
@@ -93,8 +94,20 @@ function MainTabScreen() {
                 }}
             />
             <Tab.Screen
-                name="MyProfileStack"
-                component={ProfileStackScreen}
+            name="Favorites"
+            component={Favorites}
+            options={{
+                tabBarIcon: ({ focused }) => (
+                    <Image
+                        source={Favorite}
+                        style={{ width: 40, height: 60, resizeMode: 'contain', tintColor: focused ? 'red' : 'grey' }}
+                    />
+                )
+            }}
+        />
+            <Tab.Screen
+                name="MyProfile"
+                component={MyProfile}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Image
@@ -112,7 +125,6 @@ function ProfileStackScreen() {
     return (
         <ProfileStack.Navigator screenOptions={{ headerShown: false }}>
             <ProfileStack.Screen name="MyProfile" component={MyProfile} />
-            <ProfileStack.Screen name="MyOrders" component={MyOrders} />
             <ProfileStack.Screen name="OrderDetails" component={OrderDetails} />
             <ProfileStack.Screen name="Catalog" component={Catalog} />
         </ProfileStack.Navigator>
